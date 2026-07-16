@@ -1,0 +1,1 @@
+ALTER TABLE public.posts ADD COLUMN comments_disabled boolean NOT NULL DEFAULT false;

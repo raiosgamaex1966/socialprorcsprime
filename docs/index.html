@@ -1,0 +1,2426 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentação do Social Pro — v1.0.0 | afCode</title>
+  <meta name="description"
+    content="Documentação completa para a plataforma social Social Pro por afCode. Instalação, implantação, atualização, recursos e referência da API." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="doc-header">
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18" />
+      </svg>
+    </button>
+    <a href="#" class="logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="6" fill="#247b7b" />
+        <path d="M8 9h12M8 14h8M8 19h10" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <span>Social Pro Docs</span>
+    </a>
+    <span class="version-badge">v1.0.0</span>
+    <div class="search-box">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+      <input type="text" placeholder="Pesquisar documentação… (Ctrl+K)" />
+    </div>
+    <div class="header-links">
+      <a href="https://afcode.com.br/" target="_blank">afCode</a>
+      <a href="#changelog">Registro de Alterações</a>
+    </div>
+  </header>
+
+  <!-- ═══════════ SIDEBAR ═══════════ -->
+  <nav class="doc-sidebar">
+    <!-- 1 — Getting Started -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Primeiros Passos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#introduction">Introdução</a>
+        <a href="#requirements">1. Requisitos</a>
+        <a href="#installation">2. Instalação e Configuração</a>
+        <a href="#environment">3. Variáveis de Ambiente</a>
+        <a href="#setup-wizard">4. Assistente de Configuração</a>
+        <a href="#build-compile">5. Build e Compilação</a>
+        <a href="#deployment">6. Implantação em Produção</a>
+      </div>
+    </div>
+
+    <!-- 2 — Upgrade & Migrate -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Atualização e Migração <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#upgrade-overview">Visão Geral da Atualização</a>
+        <a href="#upgrade-frontend">Atualização do Frontend</a>
+        <a href="#upgrade-backend">Backend / Banco de Dados</a>
+        <a href="#upgrade-edge-functions">Edge Functions</a>
+        <a href="#upgrade-storage">Buckets de Armazenamento</a>
+        <a href="#upgrade-checklist">Checklist Pré-atualização</a>
+        <a href="#rollback">Procedimento de Reversão</a>
+      </div>
+    </div>
+
+    <!-- 3 — Core Features -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Recursos Principais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#authentication">Autenticação</a>
+        <a href="#user-profiles">Perfis de Usuário</a>
+        <a href="#posts">Publicações e Feed</a>
+        <a href="#stories">Stories e Reels</a>
+        <a href="#messaging">Mensagens</a>
+        <a href="#groups">Grupos</a>
+        <a href="#pages">Páginas</a>
+        <a href="#events">Eventos</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#watch">Watch</a>
+        <a href="#notifications">Notificações</a>
+        <a href="#search">Pesquisa Global</a>
+      </div>
+    </div>
+
+    <!-- 4 — Monetization -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Monetização <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#credits-system">Sistema de Créditos</a>
+        <a href="#advertising">Publicidade e Anúncios</a>
+        <a href="#boost-promotions">Impulsionamentos e Promoções</a>
+      </div>
+    </div>
+
+    <!-- 5 — Admin Panel -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Painel Administrativo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#admin-overview">Visão Geral do Admin</a>
+        <a href="#admin-users">Gerenciamento de Usuários</a>
+        <a href="#admin-settings">Configurações do Admin (11 abas)</a>
+        <a href="#admin-design">Design do Site</a>
+        <a href="#admin-cms">Páginas do CMS</a>
+        <a href="#admin-moderation">Moderação</a>
+        <a href="#admin-ads">Gerenciamento de Anúncios</a>
+      </div>
+    </div>
+
+    <!-- 6 — Advanced -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Avançado <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#demo-mode">Modo de Demonstração / Teste</a>
+        <a href="#storage">Armazenamento de Arquivos</a>
+        <a href="#edge-functions">Funções de Backend</a>
+        <a href="#rls-security">Segurança e RLS</a>
+        <a href="#realtime">Tempo Real (Realtime)</a>
+        <a href="#roles">Funções de Usuário e RBAC</a>
+      </div>
+    </div>
+
+    <!-- 7 — Reference -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">
+        Referência <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </div>
+      <div class="sidebar-links">
+        <a href="#database-schema">Esquema do Banco de Dados</a>
+        <a href="#api-reference">Referência da API</a>
+        <a href="#project-structure">Estrutura do Projeto</a>
+        <a href="#changelog">Registro de Alterações</a>
+        <a href="#troubleshooting">Resolução de Problemas</a>
+        <a href="#faq">Perguntas Frequentes (FAQ)</a>
+        <a href="#credits">Créditos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════ MAIN CONTENT ═══════════ -->
+  <main class="doc-main">
+    <!-- ╔══════════════════════════════════════╗
+      ║  SECTION 1: GETTING STARTED         ║
+      ╚══════════════════════════════════════╝ -->
+
+    <!-- ────── INTRODUCTION ────── -->
+    <section class="doc-section" id="introduction">
+      <h2>Introdução</h2>
+      <p>O <strong>Social Pro</strong> é uma plataforma de rede social full-stack, pronta para produção, construída com
+        <strong>React 18</strong>, <strong>TypeScript 5</strong>, <strong>Vite 5</strong>, <strong>Tailwind CSS
+          v3</strong> e alimentada pelo <strong>Supabase</strong> (PostgreSQL, Auth, Storage, Edge Functions, Realtime).
+        Projetada e mantida por <a href="https://afcode.com.br/" target="_blank">afCode</a>.
+      </p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon">👥</div>
+          <h5>Rede Social</h5>
+          <p>Publicações, stories, reels, amigos, grupos, páginas, eventos e mensagens em tempo real.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🛒</div>
+          <h5>Marketplace</h5>
+          <p>Compra e venda com anúncios, ofertas, avaliações de vendedores, vendedores verificados e detecção de
+            fraudes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎬</div>
+          <h5>Watch e Reels</h5>
+          <p>Plataforma de vídeo com playlists, indicadores de transmissão ao vivo, curtidas e comentários.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🛡️</div>
+          <h5>Admin e Moderação</h5>
+          <p>Painel administrativo completo com gerenciamento de usuários, moderação de conteúdo, CMS e design do site.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💰</div>
+          <h5>Créditos e Publicidade</h5>
+          <p>Economia de créditos com recarga, presentes, posts patrocinados e impulsionamento de
+            páginas/posts/anúncios.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔐</div>
+          <h5>Segurança Corporativa</h5>
+          <p>Row-Level Security (RLS) em mais de 50 tabelas, funções RBAC, denúncias de conteúdo, avisos e banimentos de
+            usuários.</p>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <strong>📖 Como ler esta documentação</strong>
+        Siga as seções 1 a 6 em ordem para uma nova instalação. Se você estiver atualizando uma instalação existente,
+        pule para <a href="#upgrade-overview">Atualização e Migração</a>. Para detalhes sobre os recursos, consulte <a
+          href="#authentication">Recursos Principais</a> e <a href="#credits-system">Monetização</a>.
+      </div>
+
+      <div class="callout success">
+        <strong>🏢 Desenvolvido pela afCode</strong>
+        O Social Pro é projetado, desenvolvido e mantido pela <a href="https://afcode.com.br/" target="_blank">afCode</a>.
+        Para suporte, desenvolvimento personalizado ou dúvidas sobre licenciamento,
+        visite o nosso site.
+      </div>
+    </section>
+
+    <!-- ────── REQUIREMENTS ────── -->
+    <section class="doc-section" id="requirements">
+      <h2>1. Requisitos do Sistema</h2>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Mínimo</th>
+            <th>Recomendado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Node.js</td>
+            <td>18.x</td>
+            <td>20.x LTS</td>
+          </tr>
+          <tr>
+            <td>Gerenciador de Pacotes</td>
+            <td>npm 9+ ou bun 1.x</td>
+            <td>bun 1.x (mais rápido)</td>
+          </tr>
+          <tr>
+            <td>Git</td>
+            <td>2.x</td>
+            <td>Latest</td>
+          </tr>
+          <tr>
+            <td>Sistema Operacional</td>
+            <td>macOS, Linux, Windows (WSL2)</td>
+            <td>Ubuntu 22.04+</td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>2 GB</td>
+            <td>4 GB+</td>
+          </tr>
+          <tr>
+            <td>Disco</td>
+            <td>500 MB</td>
+            <td>1 GB+</td>
+          </tr>
+          <tr>
+            <td>Navegador (para testes)</td>
+            <td>Chrome 90+, Firefox 90+, Safari 15+</td>
+            <td>Estável mais recente</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Requisitos de Backend</h3>
+      <ul>
+        <li><strong>Projeto do Supabase</strong> — com PostgreSQL, Auth, Storage, Edge Functions e Realtime ativados
+        </li>
+        <li><strong>Supabase CLI</strong> (opcional) — para desenvolvimento local e execução manual de migrações</li>
+      </ul>
+    </section>
+
+    <!-- ────── INSTALLATION ────── -->
+    <section class="doc-section" id="installation">
+      <h2>2. Instalação e Configuração</h2>
+      <p>Siga estes passos <strong>na ordem exata</strong> para uma nova instalação:</p>
+      <ol class="step-list">
+        <li>
+          <strong>Clonar o Repositório</strong>
+          <div class="code-block">
+            <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+            <pre>
+git clone https://github.com/your-org/Social Pro.git
+cd Social Pro</pre>
+          </div>
+        </li>
+        <li>
+          <strong>Instalar Dependências</strong>
+          <div class="code-block">
+            <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+            <pre>
+# Recomendado (rápido)
+bun install
+
+# Alternativa
+npm install</pre>
+          </div>
+          <p>Isso instala cerca de 80 pacotes, incluindo React, Tailwind, Supabase SDK, Leaflet, Recharts e componentes
+            do shadcn/ui.</p>
+        </li>
+        <li>
+          <strong>Configurar Variáveis de Ambiente</strong>
+          <p>Consulte a <a href="#environment">Etapa 3: Variáveis de Ambiente</a> abaixo para ver a lista completa.</p>
+        </li>
+        <li>
+          <strong>Executar Migrações do Banco de Dados</strong>
+          <p>Se estiver hospedando por conta própria com seu próprio Supabase, aplique todas as migrações da pasta
+            <code>supabase/migrations/</code>:
+          </p>
+          <div class="code-block">
+            <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+            <pre>
+# Vincule o seu projeto Supabase
+supabase link --project-ref YOUR_PROJECT_REF
+
+# Envie todas as migrações
+supabase db push</pre>
+          </div>
+          <div class="callout info">
+            <strong>ℹ️ Usuários do afCode Cloud</strong>
+            Se você compilou este projeto na plataforma afCode, as migrações são aplicadas automaticamente. Pule
+            esta etapa.
+          </div>
+        </li>
+        <li>
+          <strong>Iniciar o Servidor de Desenvolvimento</strong>
+          <div class="code-block">
+            <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+            <pre>bun dev    # ou: npm run dev</pre>
+          </div>
+          <p>Abre em <code>http://localhost:8080</code> (servidor de desenvolvimento Vite com HMR).</p>
+        </li>
+        <li>
+          <strong>Executar o Assistente de Primeira Execução</strong>
+          <p>No primeiro acesso, você será redirecionado para <code>/setup</code>. Consulte a <a
+              href="#setup-wizard">Etapa 4</a>.</p>
+        </li>
+      </ol>
+
+      <div class="callout success">
+        <strong>✅ Resumo do Início Rápido</strong>
+        <code>git clone → bun install → configure .env → supabase db push → bun dev → /setup</code>
+      </div>
+    </section>
+
+    <!-- ────── ENVIRONMENT ────── -->
+    <section class="doc-section" id="environment">
+      <h2>3. Variáveis de Ambiente</h2>
+      <p>Crie um arquivo <code>.env</code> na raiz do projeto. As variáveis prefixadas com <code>VITE_</code> são
+        expostas ao bundle do cliente.</p>
+
+      <h3>Variáveis Obrigatórias</h3>
+      <table class="doc-table env-table">
+        <thead>
+          <tr>
+            <th>Variável</th>
+            <th>Status</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>VITE_SUPABASE_URL</code></td>
+            <td><span class="badge badge-required">Obrigatório</span></td>
+            <td>URL da API do seu projeto Supabase</td>
+            <td><code>https://xxxx.supabase.co</code></td>
+          </tr>
+          <tr>
+            <td><code>VITE_SUPABASE_PUBLISHABLE_KEY</code></td>
+            <td><span class="badge badge-required">Obrigatório</span></td>
+            <td>Chave pública/anônima do Supabase (segura para o cliente)</td>
+            <td><code>eyJhbGci…</code></td>
+          </tr>
+          <tr>
+            <td><code>VITE_SUPABASE_PROJECT_ID</code></td>
+            <td><span class="badge badge-required">Obrigatório</span></td>
+            <td>ID de referência do projeto (usado para URLs de Edge Functions)</td>
+            <td><code>abcdefghijklmnop</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Variáveis Opcionais</h3>
+      <table class="doc-table env-table">
+        <thead>
+          <tr>
+            <th>Variável</th>
+            <th>Status</th>
+            <th>Descrição</th>
+            <th>Padrão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>VITE_DEMO_MODE</code></td>
+            <td><span class="badge badge-optional">Opcional</span></td>
+            <td>Ativar modo de demonstração/teste com painel de login rápido (consulte o <a href="#demo-mode">Modo
+                Demo</a>)</td>
+            <td><code>false</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Segredos de Backend (Supabase Edge Functions)</h3>
+      <p>Estes são definidos no painel do seu projeto Supabase (ou afCode Cloud → Segredos), e <strong>não</strong>
+        no arquivo <code>.env</code>:</p>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Segredo</th>
+            <th>Objetivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>SUPABASE_SERVICE_ROLE_KEY</code></td>
+            <td>Acesso à API de nível de administrador para Edge Functions (setup-admin, etc.)</td>
+          </tr>
+          <tr>
+            <td><code>LOVABLE_API_KEY</code></td>
+            <td>Recursos de IA (tradução, etc.) — definidos automaticamente no afCode Cloud</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Exemplo de Arquivo .env</h3>
+      <div class="code-block">
+        <div class="code-header"><span>.env</span><button class="copy-btn">Copy</button></div>
+        <pre>
+VITE_SUPABASE_URL="https://your-project.supabase.co"
+VITE_SUPABASE_PUBLISHABLE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+VITE_SUPABASE_PROJECT_ID="your-project-ref"
+
+# Opcional: Ativa o modo demo (mostra o painel de login rápido na página de autenticação)
+# Defina como "true" para homologação/demo, remova ou defina como "false" para produção
+VITE_DEMO_MODE=false</pre>
+      </div>
+
+      <div class="callout warning">
+        <strong>⚠️ Segurança</strong>
+        Nunca envie o arquivo <code>.env</code> para o Git. O arquivo <code>.gitignore</code> já o exclui. Apenas os
+        valores prefixados com <code>VITE_</code> chegam ao navegador — nunca coloque chaves de service role em
+        variáveis <code>VITE_</code>.
+      </div>
+    </section>
+
+    <!-- ────── SETUP WIZARD ────── -->
+    <section class="doc-section" id="setup-wizard">
+      <h2>4. Assistente de Primeira Execução</h2>
+      <p>O Assistente de Configuração é executado automaticamente na primeira visita quando não existe nenhum Super
+        Admin. Ele cria a sua conta de administrador e configura a plataforma.</p>
+
+      <h3>Redirecionamento Automático</h3>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Condição</th>
+            <th>Comportamento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nenhum admin na tabela <code>user_roles</code></td>
+            <td>Todas as rotas redirecionam para <code>/setup</code></td>
+          </tr>
+          <tr>
+            <td>Admin existe, usuário não está logado</td>
+            <td>Rotas protegidas redirecionam para <code>/auth</code></td>
+          </tr>
+          <tr>
+            <td>Admin existe, usuário logado</td>
+            <td>Acesso normal ao aplicativo com base na função</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Etapas do Assistente</h3>
+      <ol class="step-list">
+        <li>
+          <strong>Passo 1 — Criar Super Admin</strong>
+          <p>Insira o nome de exibição, e-mail e senha (mínimo de 8 caracteres, confirmada). A conta é criada por meio
+            de uma Edge Function <code>setup-admin</code> segura com e-mail confirmado automaticamente e a função
+            <code>admin</code> atribuída no servidor.
+          </p>
+        </li>
+        <li>
+          <strong>Passo 2 — Identidade do App</strong>
+          <p>Configure o nome do site, descrição, URL e envie a identidade visual (logo claro, logo escuro, favicon). Os
+            arquivos são armazenados no bucket <code>site-assets</code>.</p>
+        </li>
+        <li>
+          <strong>Passo 3 — Configurações do Sistema</strong>
+          <p>Alterne o registro de usuários, verificação de e-mail, modo de manutenção e selecione o idioma padrão.</p>
+        </li>
+        <li>
+          <strong>Passo 4 — Revisar e Iniciar</strong>
+          <p>Resumo de todas as configurações. Clique em "Iniciar Aplicativo" → define o sinalizador
+            <code>setup_complete</code> → redireciona para a página inicial.
+          </p>
+        </li>
+      </ol>
+
+      <div class="callout danger">
+        <strong>🚨 Apenas uma vez</strong>
+        Assim que a configuração for concluída, a rota <code>/setup</code> redirecionará para <code>/auth</code>. A Edge
+        Function impede a criação duplicada de admins. Para executar o assistente novamente, exclua a linha do
+        administrador em <code>user_roles</code> e a configuração <code>setup_complete</code> em
+        <code>site_settings</code>.
+      </div>
+    </section>
+
+    <!-- ────── BUILD & COMPILE ────── -->
+    <section class="doc-section" id="build-compile">
+      <h2>5. Build e Compilação</h2>
+
+      <h3>Ambiente de Desenvolvimento</h3>
+      <div class="code-block">
+        <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+        <pre>
+bun dev       # Inicia o servidor de desenvolvimento Vite em localhost:8080
+              # Hot Module Replacement (HMR) ativado
+              # Source maps ativados</pre>
+      </div>
+
+      <h3>Build de Produção</h3>
+      <div class="code-block">
+        <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+        <pre>
+# Compila para produção
+bun run build     # ou: npm run build
+
+# Pasta de saída: dist/
+# - Bundles JS minificados com hashes de conteúdo
+# - CSS otimizado e limpo (purged)
+# - Assets estáticos com hashes para controle de cache</pre>
+      </div>
+
+      <h3>Visualizar o Build de Produção Localmente</h3>
+      <div class="code-block">
+        <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+        <pre>
+bun run preview   # ou: npm run preview
+# Serve a pasta dist/ em localhost:4173</pre>
+      </div>
+
+      <h3>Verificação de Tipagem</h3>
+      <div class="code-block">
+        <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+        <pre>npx tsc --noEmit   # Valida o TypeScript sem gerar arquivos de saída</pre>
+      </div>
+
+      <h3>Executar Testes</h3>
+      <div class="code-block">
+        <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+        <pre>
+# Testes unitários (Vitest)
+bun run test
+
+# Testes de ponta a ponta/E2E (Playwright)
+npx playwright test</pre>
+      </div>
+
+      <h3>Estrutura de Saída do Build</h3>
+      <div class="code-block">
+        <div class="code-header"><span>dist/</span></div>
+        <pre>
+dist/
+├── index.html              # Ponto de entrada (SPA)
+├── assets/
+│   ├── index-[hash].js     # Bundle principal do app
+│   ├── index-[hash].css    # CSS compilado do Tailwind e estilos
+│   ├── vendor-[hash].js    # Bibliotecas de terceiros
+│   └── *.png, *.jpg        # Imagens otimizadas
+├── favicon.png
+└── robots.txt</pre>
+      </div>
+    </section>
+
+    <!-- ────── DEPLOYMENT ────── -->
+    <section class="doc-section" id="deployment">
+      <h2>6. Implantação em Produção</h2>
+
+      <h3>Opções de Implantação</h3>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Plataforma</th>
+            <th>Método</th>
+            <th>Notas de Configuração</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>afCode Cloud</strong></td>
+            <td>Publicação com um clique</td>
+            <td>Gerencia automaticamente builds, deploys, backend e edge functions</td>
+          </tr>
+          <tr>
+            <td><strong>Vercel</strong></td>
+            <td>Conectar repositório do GitHub</td>
+            <td>Build: <code>npm run build</code> · Saída: <code>dist</code> · Framework: Vite</td>
+          </tr>
+          <tr>
+            <td><strong>Netlify</strong></td>
+            <td>Conectar repositório do GitHub</td>
+            <td>Build: <code>npm run build</code> · Publicar: <code>dist</code> · Adicionar <code>_redirects</code></td>
+          </tr>
+          <tr>
+            <td><strong>Docker</strong></td>
+            <td>Dockerfile + nginx</td>
+            <td>Veja a seção Docker abaixo</td>
+          </tr>
+          <tr>
+            <td><strong>VPS (nginx)</strong></td>
+            <td>rsync/scp manual</td>
+            <td>Veja a configuração do nginx abaixo</td>
+          </tr>
+          <tr>
+            <td><strong>Cloudflare Pages</strong></td>
+            <td>Conectar repositório do GitHub</td>
+            <td>Build: <code>npm run build</code> · Saída: <code>dist</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Arquivo <code>_redirects</code> do Netlify</h3>
+      <div class="code-block">
+        <div class="code-header"><span>public/_redirects</span><button class="copy-btn">Copy</button></div>
+        <pre>/*    /index.html   200</pre>
+      </div>
+
+      <h3>Configuração do Nginx (VPS)</h3>
+      <div class="code-block">
+        <div class="code-header"><span>nginx.conf</span><button class="copy-btn">Copy</button></div>
+        <pre>
+server {
+    listen 80;
+    server_name yourdomain.com;
+    root /var/www/Social Pro/dist;
+    index index.html;
+
+    # Fallback de SPA — crítico para roteamento no cliente
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache agressivo para assets estáticos
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff2?)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Cabeçalhos de segurança
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+}</pre>
+      </div>
+
+      <h3>Implantação com Docker</h3>
+      <div class="code-block">
+        <div class="code-header"><span>Dockerfile</span><button class="copy-btn">Copy</button></div>
+        <pre>
+# Etapa 1: Build
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package.json bun.lockb ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Etapa 2: Servir
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]</pre>
+      </div>
+      <div class="code-block">
+        <d <!-- ╔══════════════════════════════════════╗ ║ SECTION 2: UPGRADE & MIGRATE ║
+          ╚══════════════════════════════════════╝ -->
+
+          <section class="doc-section" id="upgrade-overview">
+            <h2>Atualização e Migração — Visão Geral</h2>
+            <p>Quando uma nova versão do Social Pro é lançada, você precisa atualizar <strong>três camadas</strong>:</p>
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="icon">🖥️</div>
+                <h5>1. Frontend</h5>
+                <p>Obtenha o código mais recente, instale as dependências, recompile e implante novamente o pacote
+                  estático.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🗄️</div>
+                <h5>2. Banco de Dados</h5>
+                <p>Aplique novas migrações SQL para adicionar tabelas, colunas, políticas de segurança (RLS) e funções.
+                </p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h5>3. Edge Functions</h5>
+                <p>Implante funções serverless novas ou atualizadas.</p>
+              </div>
+            </div>
+            <div class="callout warning">
+              <strong>⚠️ Sempre faça backup primeiro</strong>
+              Antes de atualizar, exporte seu banco de dados e faça uma cópia da sua pasta <code>dist/</code> atual.
+              Consulte o <a href="#rollback">Procedimento de Reversão</a>.
+            </div>
+          </section>
+
+          <section class="doc-section" id="upgrade-frontend">
+            <h2>Atualização do Frontend</h2>
+            <h3>Para Projetos no afCode Cloud</h3>
+            <p>As atualizações do frontend são automáticas quando você clica em <strong>Publish → Update</strong>.
+              Nenhuma ação manual é necessária.</p>
+
+            <h3>Para Projetos Hospedados por Conta Própria / Sincronizados com o GitHub</h3>
+            <ol class="step-list">
+              <li>
+                <strong>Obter o Código Mais Recente</strong>
+                <div class="code-block">
+                  <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+                  <pre>
+cd Social Pro
+git pull origin main
+
+# Se estiver usando o download em ZIP: extraia a nova versão
+# Mantenha seu arquivo .env — não o substitua</pre>
+                </div>
+              </li>
+              <li>
+                <strong>Instalar Dependências Atualizadas</strong>
+                <div class="code-block">
+                  <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+                  <pre>
+rm -rf node_modules
+bun install   # or: npm install</pre>
+                </div>
+              </li>
+              <li>
+                <strong>Verificar Novas Variáveis de Ambiente</strong>
+                <p>Compare seu <code>.env</code> com o registro de alterações ou com a seção de <a
+                    href="#environment">Variáveis de Ambiente</a>.</p>
+              </li>
+              <li>
+                <strong>Compilar e Testar Localmente</strong>
+                <div class="code-block">
+                  <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+                  <pre>
+npx tsc --noEmit   # Verifique a tipagem primeiro
+bun run build      # Build de produção
+bun run preview    # Pré-visualizar localmente</pre>
+                </div>
+              </li>
+              <li>
+                <strong>Implantar</strong>
+                <p>Envie a nova pasta <code>dist/</code> para o seu provedor de hospedagem (consulte a seção de <a
+                    href="#deployment">Implantação</a>).</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="doc-section" id="upgrade-backend">
+            <h2>Atualização do Banco de Dados e Backend</h2>
+            <p>Cada versão pode incluir novas migrações SQL em <code>supabase/migrations/</code>.</p>
+
+            <h3>Para Projetos no afCode Cloud</h3>
+            <p>As migrações do banco de dados são aplicadas <strong>automaticamente</strong>. Nenhuma etapa manual é
+              necessária.</p>
+
+            <h3>Para Supabase Hospedado por Conta Própria</h3>
+            <ol class="step-list">
+              <li>
+                <strong>Revisar Novas Migrações</strong>
+                <div class="code-block">
+                  <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+                  <pre>
+ls -la supabase/migrations/
+cat supabase/migrations/YYYYMMDDHHMMSS_migration_name.sql</pre>
+                </div>
+              </li>
+              <li>
+                <strong>Aplicar Migrações</strong>
+                <div class="code-block">
+                  <div class="code-header"><span>Terminal — Opção A: Supabase CLI</span><button
+                      class="copy-btn">Copy</button></div>
+                  <pre>
+supabase link --project-ref YOUR_PROJECT_REF
+supabase db push</pre>
+                </div>
+                <div class="code-block">
+                  <div class="code-header"><span>Terminal — Opção B: SQL Manual</span><button
+                      class="copy-btn">Copy</button></div>
+                  <pre>
+psql "postgresql://postgres:YOUR_PASSWORD@db.YOUR_REF.supabase.co:5432/postgres"
+\i supabase/migrations/YYYYMMDDHHMMSS_new_migration.sql</pre>
+                </div>
+              </li>
+              <li>
+                <strong>Verificar Esquema</strong>
+                <div class="code-block">
+                  <div class="code-header"><span>SQL</span><button class="copy-btn">Copy</button></div>
+                  <pre>
+SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename;
+SELECT tablename, rowsecurity FROM pg_tables WHERE schemaname = 'public' AND rowsecurity = true;</pre>
+                </div>
+              </li>
+            </ol>
+            <div class="callout danger">
+              <strong>🚨 A Ordem das Migrações é Importante</strong>
+              Sempre aplique as migrações em ordem cronológica (ordenadas pelo carimbo de data/hora do nome do arquivo).
+              Nunca pule uma migração.
+            </div>
+          </section>
+
+          <section class="doc-section" id="upgrade-edge-functions">
+            <h2>Atualização de Edge Functions</h2>
+            <h3>Para afCode Cloud</h3>
+            <p>As Edge Functions são implantadas <strong>automaticamente</strong> quando o código é alterado. Nenhuma
+              ação é necessária.</p>
+
+            <h3>Para Supabase Hospedado por Conta Própria</h3>
+            <div class="code-block">
+              <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+              <pre>
+# Implanta todas as Edge Functions de uma vez
+supabase functions deploy --all
+
+# Ou implante individualmente
+supabase functions deploy setup-admin
+supabase functions deploy translate-post
+supabase functions deploy embed-post
+supabase functions deploy tenor-proxy
+supabase functions deploy event-reminders
+supabase functions deploy memories-notification
+supabase functions deploy publish-scheduled-posts
+supabase functions deploy weekly-event-digest
+supabase functions deploy detect-fraud-signals
+supabase functions deploy auto-verify-sellers
+supabase functions deploy fetch-link-preview</pre>
+            </div>
+            <p>Verifique se cada função responde (deve retornar 400 ou 200, não 404):</p>
+            <div class="code-block">
+              <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+              <pre>
+curl -i https://YOUR_REF.supabase.co/functions/v1/setup-admin \
+  -H "Authorization: Bearer YOUR_ANON_KEY"</pre>
+            </div>
+          </section>
+
+          <section class="doc-section" id="upgrade-storage">
+            <h2>Buckets de Armazenamento</h2>
+            <p>Novas versões podem exigir buckets de armazenamento adicionais. Verifique se todos os 10 buckets existem:
+            </p>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Bucket</th>
+                  <th>Público</th>
+                  <th>Objetivo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>profile-images</code></td>
+                  <td>✅</td>
+                  <td>Avatares e fotos de capa</td>
+                </tr>
+                <tr>
+                  <td><code>post-images</code></td>
+                  <td>✅</td>
+                  <td>Anexos de imagens de posts e imagens de posts patrocinados</td>
+                </tr>
+                <tr>
+                  <td><code>post-videos</code></td>
+                  <td>✅</td>
+                  <td>Anexos de vídeo de posts</td>
+                </tr>
+                <tr>
+                  <td><code>story-media</code></td>
+                  <td>✅</td>
+                  <td>Fotos e vídeos de Stories</td>
+                </tr>
+                <tr>
+                  <td><code>reel-videos</code></td>
+                  <td>✅</td>
+                  <td>Conteúdo de vídeo de Reels</td>
+                </tr>
+                <tr>
+                  <td><code>chat-attachments</code></td>
+                  <td>✅</td>
+                  <td>Anexos de arquivos de mensagens</td>
+                </tr>
+                <tr>
+                  <td><code>listing-images</code></td>
+                  <td>✅</td>
+                  <td>Fotos de anúncios do Marketplace</td>
+                </tr>
+                <tr>
+                  <td><code>group-images</code></td>
+                  <td>✅</td>
+                  <td>Avatares e capas de grupos</td>
+                </tr>
+                <tr>
+                  <td><code>page-images</code></td>
+                  <td>✅</td>
+                  <td>Avatares e capas de páginas</td>
+                </tr>
+                <tr>
+                  <td><code>site-assets</code></td>
+                  <td>✅</td>
+                  <td>Logos, favicons, identidade visual</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="code-block">
+              <div class="code-header"><span>SQL — Criar buckets ausentes</span><button class="copy-btn">Copy</button>
+              </div>
+              <pre>
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('site-assets', 'site-assets', true)
+ON CONFLICT (id) DO NOTHING;</pre>
+            </div>
+          </section>
+
+          <section class="doc-section" id="upgrade-checklist">
+            <h2>Checklist de Pré-atualização</h2>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>✓</th>
+                  <th>Etapa</th>
+                  <th>Comando / Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>☐</td>
+                  <td>Backup do banco de dados</td>
+                  <td>exportação via <code>pg_dump</code> ou painel do Supabase</td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Backup da pasta <code>dist/</code> atual</td>
+                  <td><code>cp -r dist/ dist-backup/</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Backup do arquivo <code>.env</code></td>
+                  <td><code>cp .env .env.backup</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Obter código mais recente</td>
+                  <td><code>git pull origin main</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Verificar novas variáveis de ambiente</td>
+                  <td>Ler o changelog / documentação de variáveis</td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Instalar dependências</td>
+                  <td><code>rm -rf node_modules && bun install</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Aplicar migrações do banco de dados</td>
+                  <td><code>supabase db push</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Implantar Edge Functions</td>
+                  <td><code>supabase functions deploy --all</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Verificar buckets de armazenamento</td>
+                  <td>Verificar se todos os 10 buckets existem</td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Verificar tipagem</td>
+                  <td><code>npx tsc --noEmit</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Compilar (Build)</td>
+                  <td><code>bun run build</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Visualizar localmente</td>
+                  <td><code>bun run preview</code></td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Implantar frontend</td>
+                  <td>Enviar pasta <code>dist/</code> ou enviar para hospedagem</td>
+                </tr>
+                <tr>
+                  <td>☐</td>
+                  <td>Verificação pós-implantação</td>
+                  <td>Testar login, navegação e principais recursos</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="doc-section" id="rollback">
+            <h2>Procedimento de Reversão</h2>
+            <h3>Reversão do Frontend</h3>
+            <div class="code-block">
+              <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+              <pre>
+rm -rf dist/
+cp -r dist-backup/ dist/
+
+# Ou reverta via git
+git checkout HEAD~1
+bun install && bun run build</pre>
+            </div>
+
+            <h3>Reversão do Banco de Dados</h3>
+            <div class="callout danger">
+              <strong>🚨 Reversões de banco de dados são destrutivas</strong>
+              As migrações SQL não podem ser revertidas automaticamente. Restaure a partir do seu backup:
+            </div>
+            <div class="code-block">
+              <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+              <pre>psql "postgresql://postgres:PASSWORD@db.REF.supabase.co:5432/postgres" < backup.sql</pre>
+            </div>
+
+            <h3>Projetos no afCode Cloud</h3>
+            <p>Use o recurso nativo de <strong>Histórico</strong> para restaurar uma versão anterior. Clique no ícone do
+              relógio no editor para navegar e restaurar estados anteriores.</p>
+
+            <!-- ╔══════════════════════════════════════╗
+      ║  SECTION 3: CORE FEATURES           ║
+      ╚══════════════════════════════════════╝ -->
+
+            <section class="doc-section" id="authentication">
+              <h2>Autenticação</h2>
+              <h3>Métodos de Login</h3>
+              <ul>
+                <li><strong>E-mail e Senha</strong> — Login padrão com verificação opcional de e-mail</li>
+                <li><strong>Google OAuth</strong> — Login com um clique via conta do Google</li>
+                <li><strong>Apple Sign-In</strong> — Login com ID Apple</li>
+              </ul>
+              <h3>Fluxo de Registro em 7 Etapas</h3>
+              <ol>
+                <li>Detalhes da conta (nome, e-mail, senha com indicador de força)</li>
+                <li>Informações pessoais (data de nascimento, gênero, telefone, localização)</li>
+                <li>Envio de foto de perfil com ferramenta de corte (crop)</li>
+                <li>Envio de foto de capa</li>
+                <li>Seção Biografia / Sobre</li>
+                <li>Seleção de interesses (escolha até 8 de 14 categorias)</li>
+                <li>Resumo de busca de amigos e envio</li>
+              </ol>
+              <h3>Redefinição de Senha</h3>
+              <p>Os usuários clicam em "Esqueci a Senha" → recebem o e-mail de redefinição → são redirecionados para
+                <code>/reset-password</code> → definem a nova senha.
+              </p>
+              <h3>Verificação de E-mail</h3>
+              <p>Configurável nas Configurações do Admin. Quando ativado, os usuários devem verificar o e-mail antes de
+                acessar o aplicativo. Inclui botão de reenvio com tempo de espera de 60 segundos.</p>
+              <h3>Login Rápido no Modo Demo</h3>
+              <p>Quando <code>VITE_DEMO_MODE=true</code>, um painel de "Login Rápido de Demonstração" aparece na página
+                de autenticação com três contas baseadas em funções. Consulte o <a href="#demo-mode">Modo de
+                  Demonstração / Teste</a> para obter detalhes.</p>
+            </section>
+
+            <section class="doc-section" id="user-profiles">
+              <h2>Perfis de Usuário</h2>
+              <p>Armazenado na tabela <code>profiles</code>, criado automaticamente no cadastro por meio de uma trigger
+                no banco de dados.</p>
+              <h3>Dados do Perfil</h3>
+              <ul>
+                <li>Nome de exibição, biografia, localização, site</li>
+                <li>Avatar e foto de capa com suporte a corte (armazenados no bucket <code>profile-images</code>)</li>
+                <li>Data de nascimento, gênero, telefone, educação, local de trabalho</li>
+                <li>Interesses (array), status de relacionamento</li>
+                <li>Presença online (<code>last_seen_at</code> com rastreamento em tempo real)</li>
+                <li>Barra de progresso de conclusão do perfil</li>
+              </ul>
+              <h3>Abas do Perfil</h3>
+              <ul>
+                <li><strong>Publicações</strong> — Linha do tempo do usuário</li>
+                <li><strong>Sobre</strong> — Cartão de introdução com detalhes pessoais</li>
+                <li><strong>Amigos</strong> — Lista de amigos com gerenciamento</li>
+                <li><strong>Fotos</strong> — Galeria de fotos com lightbox</li>
+                <li><strong>Check-ins</strong> — Check-ins de localização com mapa (Leaflet)</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="posts">
+              <h2>Publicações e Feed</h2>
+              <ul>
+                <li>Carrossel de várias imagens, envios de vídeo, estilos de fundo, sentimentos, localização de check-in
+                </li>
+                <li>Privacidade: Público, Amigos, Somente Eu</li>
+                <li>6 tipos de reações (curtir, amei, haha, uau, triste, grrrr), comentários em tópicos</li>
+                <li>Compartilhar, salvar/favoritar, fixar no perfil, arquivar</li>
+                <li>Agendamento de publicações (visualizações de calendário e semanal)</li>
+                <li>Histórico de edições com visualização de diferenças (diff), incorporação de publicações, tradução
+                  por IA</li>
+                <li>Pré-visualização de links com metadados OpenGraph</li>
+                <li>Ocultar publicações, denunciar publicações, desativar comentários por publicação</li>
+                <li>Impulsionar publicações com créditos de promoção</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="stories">
+              <h2>Stories e Reels</h2>
+              <h3>Stories</h3>
+              <ul>
+                <li>Stories de foto/vídeo, expiração automática em 24 horas</li>
+                <li>Visualizador em tela cheia com indicadores de progresso</li>
+                <li>Reações (emoji + mensagem opcional)</li>
+                <li>Destaques do Story com capas personalizadas</li>
+                <li>Armazenamento: bucket <code>story-media</code> (máximo de 50MB)</li>
+              </ul>
+              <h3>Reels</h3>
+              <ul>
+                <li>Vídeo curto (máximo de 100MB), envio com legenda e miniatura</li>
+                <li>Curtidas, comentários em tópicos, compartilhamento, contagem de visualizações</li>
+                <li>Sistema de seguir criadores</li>
+                <li>Armazenamento: bucket <code>reel-videos</code></li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="messaging">
+              <h2>Mensagens</h2>
+              <p>Chat 1:1 e em grupo em tempo real com mensagens completas:</p>
+              <ul>
+                <li>Mensagens diretas e chats em grupo (funções de administrador)</li>
+                <li>Anexos de arquivos, imagens e mensagens de voz (máximo de 10MB)</li>
+                <li>Reações de mensagem (emoji), recibos de leitura, indicadores de digitação</li>
+                <li>Fixar, editar, excluir e encaminhar mensagens</li>
+                <li>Seletor de GIFs (proxy do Tenor), seletor de emojis</li>
+                <li>Configurações do chat em grupo (renomear, avatar, adicionar/remover membros)</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="groups">
+              <h2>Grupos</h2>
+              <ul>
+                <li>Grupos públicos/privados com 10 categorias</li>
+                <li>Publicações do grupo com suporte a fixação, comentários, reações</li>
+                <li>Conversa de grupo criada automaticamente (chat vinculado ao grupo)</li>
+                <li>Eventos com RSVP (no escopo do grupo)</li>
+                <li>Funções: admin, moderador, membro</li>
+                <li>Links de convite compartilháveis com expiração e limites de uso</li>
+                <li>Preferências de notificação por grupo (silenciar, alternar por tipo)</li>
+                <li>Análise (crescimento de membros, engajamento), feed de atividades, regras</li>
+                <li>Hover cards para visualização rápida</li>
+                <li>Impulsionar publicações do grupo com créditos de promoção</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="pages">
+              <h2>Páginas</h2>
+              <ul>
+                <li>Páginas de empresas/organizações com categorias e URLs amigáveis (slug)</li>
+                <li>Publicações de página com agendamento, comentários, reações</li>
+                <li>Sistema de seguidores, suporte a múltiplos administradores</li>
+                <li>Eventos (no escopo da página), análise, hover cards</li>
+                <li>Informações de contato: e-mail, telefone, site, localização</li>
+                <li>Impulsionar páginas inteiras e posts de páginas individuais com créditos</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="events">
+              <h2>Eventos</h2>
+              <ul>
+                <li>10 categorias: Social, Negócios, Educação, Entretenimento, Esportes, Tecnologia, Saúde, Artes,
+                  Comunidade, Outro</li>
+                <li>RSVP: Confirmado, Interessado, Não Vou com lista de participantes</li>
+                <li>Recorrência: Nenhuma, Diariamente, Semanalmente, Mensalmente, Anualmente com data de término</li>
+                <li>Lembretes: Configuráveis (15 minutos a 1 semana antes)</li>
+                <li>Visualização em calendário (mensal com pontos) e visualização em mapa (agrupamento do Leaflet)</li>
+                <li>Comentários em tópicos, eventos relacionados, exportação .ics, modal de compartilhamento</li>
+                <li>Resumo semanal por e-mail via Edge Function</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="marketplace">
+              <h2>Marketplace</h2>
+              <h3>Anúncios</h3>
+              <ul>
+                <li>10 categorias, 4 condições, múltiplas imagens, localização</li>
+                <li>Status: Ativo, Vendido, Reservado</li>
+                <li>Modelos para criação rápida, gráficos de histórico de preços</li>
+                <li>Contagem de visualizações, salvar/favoritar, visualizados recentemente</li>
+              </ul>
+              <h3>Transações e Confiança</h3>
+              <ul>
+                <li>Sistema de ofertas (comprador → vendedor com mensagem opcional)</li>
+                <li>Painel do vendedor com análises</li>
+                <li>Avaliações e classificações de vendedores, selos de vendedor verificado</li>
+                <li>Detecção automatizada de fraudes (Edge Function)</li>
+                <li>Anúncios promovidos baseados em créditos com segmentação</li>
+                <li>Denúncias de anúncios com fila de moderação</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="watch">
+              <h2>Watch</h2>
+              <ul>
+                <li>Envios de vídeo com 13 categorias</li>
+                <li>Playlists (públicas/privadas), indicador de transmissão ao vivo</li>
+                <li>Curtidas, comentários em tópicos, salvar, rastreamento de visualizações</li>
+                <li>Recomendações por categoria</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="notifications">
+              <h2>Notificações</h2>
+              <ul>
+                <li>Notificações em tempo real no aplicativo com indicador de não lidas</li>
+                <li>Tipos: solicitações de amizade, curtidas, comentários, compartilhamentos, convites de grupo,
+                  lembretes de eventos, mensagens</li>
+                <li><strong>Notificações de crédito</strong>: presente recebido, presente do admin, confirmação de
+                  gastos, aviso de saldo baixo</li>
+                <li>Filtrável por categoria: Todos, Social, Créditos, Grupos, Páginas</li>
+                <li>Notificações push na web (permissão do navegador)</li>
+                <li>Alertas sonoros (alternáveis), dispensar deslizando no celular</li>
+                <li>Lembranças de "Neste Dia" com Edge Function</li>
+                <li>Marcar como lidas (individual e em massa)</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="search">
+              <h2>Pesquisa Global</h2>
+              <p>Pesquisa unificada a partir do cabeçalho em usuários, publicações, grupos, páginas, eventos, anúncios e
+                hashtags. Resultados em tempo real com abas categorizadas. Páginas de hashtags em
+                <code>/hashtag/:tag</code>.
+              </p>
+            </section>
+
+            <!-- ╔══════════════════════════════════════╗
+      ║  SECTION 4: MONETIZATION            ║
+      ╚══════════════════════════════════════╝ -->
+
+            <section class="doc-section" id="credits-system">
+              <h2>Sistema de Créditos</h2>
+              <p>O Social Pro inclui uma <strong>economia de créditos de promoção</strong> completa para monetizar conteúdos
+                impulsionados e publicidade.</p>
+
+              <h3>Saldo de Créditos</h3>
+              <ul>
+                <li>Cada usuário possui um registro em <code>promotion_credits</code> com um campo <code>balance</code>
+                </li>
+                <li>Saldo exibido na página de Créditos (<code>/credits</code>) e na Central de Anúncios
+                  (<code>/advertising</code>)</li>
+                <li>Histórico de transações na tabela <code>credit_transactions</code> (tipo: spend, topup, gift,
+                  admin_gift)</li>
+              </ul>
+
+              <h3>Métodos de Recarga</h3>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Método</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Pacotes de Crédito</strong></td>
+                    <td>Os usuários compram pacotes (50, 100, 250, 500, 1000 créditos) por meio da página de Créditos
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Presente do Admin</strong></td>
+                    <td>Os administradores podem presentear qualquer usuário com créditos a partir do Gerenciamento de
+                      Usuários, com um valor personalizado + mensagem</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Presente de Usuário para Usuário</strong></td>
+                    <td>Os usuários podem enviar créditos como presente para amigos por meio do modal de Enviar Créditos
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3>Notificações de Crédito</h3>
+              <ul>
+                <li><strong>Presente Recebido</strong> — notificação no aplicativo quando alguém lhe envia créditos</li>
+                <li><strong>Presente do Admin</strong> — notificação especial para créditos de bônus presenteados por um
+                  administrador</li>
+                <li><strong>Confirmação de Gastos</strong> — mensagem flutuante (toast) após impulsionar posts, páginas
+                  ou anúncios</li>
+                <li><strong>Aviso de Saldo Baixo</strong> — alerta flutuante (toast) quando o saldo cai para ≤10
+                  créditos</li>
+              </ul>
+
+              <h3>Tabelas do Banco de Dados</h3>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Tabela</th>
+                    <th>Objetivo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>promotion_credits</code></td>
+                    <td>Saldos de créditos dos usuários</td>
+                  </tr>
+                  <tr>
+                    <td><code>credit_transactions</code></td>
+                    <td>Livro de registro completo de todas as movimentações de créditos</td>
+                  </tr>
+                  <tr>
+                    <td><code>sponsored_posts</code></td>
+                    <td>Campanhas de anúncios ativas e históricas</td>
+                  </tr>
+                  <tr>
+                    <td><code>promoted_listings</code></td>
+                    <td>Anúncios impulsionados do marketplace</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="doc-section" id="advertising">
+              <h2>Publicidade e Anúncios</h2>
+              <p>A Central de Anúncios em <code>/advertising</code> oferece uma plataforma de anúncios de
+                autoatendimento completa.</p>
+
+              <h3>Painel de Publicidade</h3>
+              <ul>
+                <li><strong>Aba do Painel (Dashboard)</strong> — Estatísticas rápidas (anúncios ativos, total de
+                  impressões, cliques, CTR médio), gráficos de desempenho com filtros de intervalo de datas</li>
+                <li>
+                  <strong>Aba Meus Anúncios (My Ads)</strong> — Gerenciamento completo (CRUD) de todas as publicações
+                  patrocinadas do usuário:
+                  <ul>
+                    <li>Filtros de status: Todos, Ativos, Pausados, Expirados</li>
+                    <li>Estatísticas por anúncio: impressões, cliques, CTR, créditos gastos, intervalo de datas</li>
+                    <li><strong>Criar</strong> — Novo post patrocinado com texto do anúncio, imagem, URL do link,
+                      duração (1/3/7 dias)</li>
+                    <li><strong>Editar</strong> — Atualizar conteúdo, URL do link, segmentação (categoria, localização,
+                      limite de frequência)</li>
+                    <li><strong>Pausar/Ativar</strong> — Alternar a veiculação do anúncio entre ativado e desativado
+                    </li>
+                    <li><strong>Excluir</strong> — Remover o anúncio permanentemente</li>
+                  </ul>
+                </li>
+                <li><strong>Aba Créditos (Credits)</strong> — Visualizar saldo, comprar pacotes, aprender como funcionam
+                  os créditos</li>
+              </ul>
+
+              <h3>Tipos de Anúncio</h3>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                    <th>Posicionamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Publicações Patrocinadas</strong></td>
+                    <td>Anúncios criados por usuários que aparecem no feed de todos com o selo "Patrocinado"</td>
+                    <td>No feed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Banners Horizontais</strong></td>
+                    <td>Espaços de anúncio HTML gerenciados pelo administrador (cabeçalho, rodapé, entre posts)</td>
+                    <td>Acima/abaixo do conteúdo</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Anúncios Intersticiais</strong></td>
+                    <td>Anúncios em tela cheia exibidos em intervalos de navegação (5 navegações, intervalo de 5
+                      minutos)</td>
+                    <td>Sobreposição de tela cheia</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Anúncios de Barra Lateral</strong></td>
+                    <td>Anúncio HTML na área da barra lateral</td>
+                    <td>Barra lateral direita</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3>Segmentação de Público-Alvo</h3>
+              <ul>
+                <li><strong>Categoria</strong> — Segmentar usuários que navegam em categorias específicas do marketplace
+                </li>
+                <li><strong>Localização</strong> — Segmentação geográfica</li>
+                <li><strong>Idade e Gênero</strong> — Filtros demográficos (idade mínima/máxima, gênero)</li>
+                <li><strong>Limite de Frequência (Frequency Cap)</strong> — Máximo de impressões por usuário em 24 horas
+                  (rastreado no lado do cliente via localStorage)</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="boost-promotions">
+              <h2>Impulsionamentos e Promoções</h2>
+              <p>Os usuários podem impulsionar vários tipos de conteúdo usando seus créditos de promoção:</p>
+
+              <h3>Conteúdo Impulsionável</h3>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Conteúdo</th>
+                    <th>Localização</th>
+                    <th>Opções de Duração</th>
+                    <th>Custo em Créditos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Publicações do Feed</strong></td>
+                    <td>Menu de ação do post → "Impulsionar publicação"</td>
+                    <td>3, 7, 14 dias</td>
+                    <td>15, 30, 50 créditos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Páginas</strong></td>
+                    <td>Cabeçalho da página → Botão "Impulsionar Página" (apenas proprietário)</td>
+                    <td>3, 7, 14 dias</td>
+                    <td>20, 40, 70 créditos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Publicações de Página</strong></td>
+                    <td>Post da página → Ícone de foguete (apenas proprietário)</td>
+                    <td>3, 7, 14 dias</td>
+                    <td>15, 30, 50 créditos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Publicações de Grupo</strong></td>
+                    <td>Menu suspenso do post do grupo → "Impulsionar publicação" (apenas autor)</td>
+                    <td>3, 7, 14 dias</td>
+                    <td>15, 30, 50 créditos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Anúncios do Marketplace</strong></td>
+                    <td>Anúncio → Botão "Promover"</td>
+                    <td>3, 7, 14 dias</td>
+                    <td>10, 20, 35 créditos</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Publicações Patrocinadas</strong></td>
+                    <td>Publicidade → "Criar Anúncio"</td>
+                    <td>1, 3, 7 dias</td>
+                    <td>10, 25, 50 créditos</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3>Como Funciona o Impulsionamento</h3>
+              <ol>
+                <li>O usuário clica em "Impulsionar" em um conteúdo compatível</li>
+                <li>O modal exibe as opções de nível com os custos em créditos</li>
+                <li>Os créditos são deduzidos da tabela <code>promotion_credits</code></li>
+                <li>A transação é registrada em <code>credit_transactions</code></li>
+                <li>O post patrocinado é criado na tabela <code>sponsored_posts</code> com as datas de início e término
+                </li>
+                <li>O conteúdo aparece nos feeds com o selo "Patrocinado" durante o período ativo</li>
+                <li>Aviso de saldo baixo se os créditos restantes forem ≤10</li>
+              </ol>
+            </section>
+
+            <!-- ╔══════════════════════════════════════╗
+      ║  SECTION 5: ADMIN PANEL             ║
+      ╚══════════════════════════════════════╝ -->
+
+            <section class="doc-section" id="admin-overview">
+              <h2>Painel Administrativo</h2>
+              <p>Acessível em <code>/admin</code> — requer a função <code>admin</code>. Painel com 11 categorias de
+                gerenciamento:</p>
+              <div class="feature-grid">
+                <div class="feature-card">
+                  <div class="icon">👥</div>
+                  <h5>Gerenciamento de Usuários</h5>
+                  <p>Visualizar, pesquisar, gerenciar usuários, atribuir funções, doar créditos e emitir
+                    avisos/banimentos.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">📝</div>
+                  <h5>Páginas do CMS</h5>
+                  <p>Criar páginas de conteúdo estático (Termos, Privacidade, etc.).</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">⚙️</div>
+                  <h5>Configurações (11 abas)</h5>
+                  <p>Configuração completa da plataforma.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">🎨</div>
+                  <h5>Design do Site</h5>
+                  <p>Logos, favicon, cores do tema, CSS/JS personalizado.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">📊</div>
+                  <h5>Análise (Analytics)</h5>
+                  <p>Usuários online, métricas de engajamento.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">🔍</div>
+                  <h5>Verificação</h5>
+                  <p>Solicitações de verificação de usuário e vendedor.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">📢</div>
+                  <h5>Anúncios</h5>
+                  <p>Gerenciar espaços de anúncio HTML: cabeçalho, barra lateral, rodapé, posições no feed.</p>
+                </div>
+                <div class="feature-card">
+                  <div class="icon">🛡️</div>
+                  <h5>Moderação</h5>
+                  <p>Denúncias de conteúdo, avisos, banimentos, registro de atividades.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section" id="admin-users">
+              <h2>Gerenciamento de Usuários</h2>
+              <ul>
+                <li>Pesquisar e filtrar usuários, visualizar perfis completos</li>
+                <li>Atribuir/remover funções (admin, moderator)</li>
+                <li>Emitir avisos, banimentos temporários (com duração), banimentos permanentes</li>
+                <li>Doar créditos de promoção para qualquer usuário com valor e mensagem personalizados</li>
+                <li>Visualizar denúncias de conteúdo e atividades do usuário</li>
+                <li>Tabela paginada com 15 usuários por página</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="admin-settings">
+              <h2>Configurações do Admin (11 Categorias)</h2>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Aba</th>
+                    <th>Principais Configurações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><strong>Geral</strong></td>
+                    <td>Modo de manutenção, URLs amigáveis para SEO, alternâncias básicas</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><strong>Usuários</strong></td>
+                    <td>Ativar/desativar registros, funções padrão, configurações de perfil</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><strong>Login e Segurança</strong></td>
+                    <td>Autenticação de dois fatores (2FA), proteção contra força bruta, tempo limite da sessão</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><strong>Informações do Site</strong></td>
+                    <td>Nome do site, descrição, URL, e-mail de contato</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td><strong>Chaves de API</strong></td>
+                    <td>Gerenciamento de chaves de API de terceiros</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td><strong>Arquivos e Armazenamento</strong></td>
+                    <td>Seleção de backend (S3, DigitalOcean, Wasabi, FTP, GCloud, Backblaze), alternância do FFMPEG
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td><strong>E-mail e SMS</strong></td>
+                    <td>Configuração de SMTP, gateway de SMS, notificações push, modelos de e-mail HTML</td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td><strong>Configurações de IA</strong></td>
+                    <td>Integração de IA, monetização de IA baseada em créditos</td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td><strong>Recursos</strong></td>
+                    <td>Ativar/desativar recursos da plataforma (stories, reels, marketplace, etc.)</td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td><strong>Pagamentos</strong></td>
+                    <td>Múltiplos gateways (Stripe, PayPal, etc.), preços de assinatura, limites de carteira</td>
+                  </tr>
+                  <tr>
+                    <td>11</td>
+                    <td><strong>Aplicativos Móveis</strong></td>
+                    <td>Configurações de aplicativos móveis e links de download</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="doc-section" id="admin-design">
+              <h2>Design do Site</h2>
+              <ul>
+                <li><strong>Logos claro e escuro</strong> — enviados para o bucket <code>site-assets</code>, aplicados
+                  por meio do hook <code>useSiteBranding</code></li>
+                <li><strong>Favicon</strong> — atualizado dinamicamente na aba do navegador</li>
+                <li><strong>Cores do tema</strong> — A paleta principal usa verde-petróleo (#247b7b) com design tokens
+                  personalizados</li>
+                <li><strong>CSS Personalizado</strong> — Injetar substituições globais</li>
+                <li><strong>JS Personalizado</strong> — Injetar scripts de rastreamento, analytics, etc.</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="admin-cms">
+              <h2>Páginas do CMS</h2>
+              <p>Editor de texto rico para páginas estáticas (Termos de Serviço, Política de Privacidade, etc.).
+                Acessível em <code>/page/:slug</code>. Alternância de publicar/despublicar. Páginas públicas podem ser
+                lidas sem autenticação.</p>
+            </section>
+
+            <section class="doc-section" id="admin-moderation">
+              <h2>Moderação</h2>
+              <h3>Painel do Moderador (<code>/moderator</code>)</h3>
+              <p>Acessível para as funções de <code>moderator</code> ou <code>admin</code>:</p>
+              <ul>
+                <li><strong>Fila de Moderação de Conteúdo</strong> — Revisar conteúdo denunciado com rastreamento de
+                  status</li>
+                <li><strong>Avisos e Banimentos de Usuários</strong> — Emitir avisos, banimentos temporários, banimentos
+                  permanentes com motivo</li>
+                <li><strong>Registro de Atividades</strong> — Registro completo de auditoria das ações de moderação</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="admin-ads">
+              <h2>Gerenciamento de Anúncios (Admin)</h2>
+              <p>O painel de administração inclui o gerenciamento de espaços de anúncios HTML para 6 posições de
+                veiculação:</p>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Espaço</th>
+                    <th>Posicionamento</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Header</strong></td>
+                    <td>Abaixo da barra de navegação, todas as páginas</td>
+                    <td>Anúncio de banner HTML</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sidebar</strong></td>
+                    <td>Parte inferior da barra lateral inicial</td>
+                    <td>Anúncio de barra lateral HTML</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Footer</strong></td>
+                    <td>Acima do rodapé, todas as páginas</td>
+                    <td>Anúncio de banner HTML</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Posts 1</strong></td>
+                    <td>Após 10 publicações no feed</td>
+                    <td>Anúncio HTML no feed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Posts 2</strong></td>
+                    <td>Após 20 publicações no feed</td>
+                    <td>Anúncio HTML no feed</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Posts 3</strong></td>
+                    <td>Após 30 publicações no feed</td>
+                    <td>Anúncio HTML no feed</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Cada espaço suporta: inserção de código HTML, visualização ao vivo, alternância de ativar/pausar,
+                limpar e salvamento em massa.</p>
+            </section>
+
+            <!-- ╔══════════════════════════════════════╗
+     ║  SECTION 6: ADVANCED                ║
+     ╚══════════════════════════════════════╝ -->
+
+            <section class="doc-section" id="demo-mode">
+              <h2>Demo / Test Mode</h2>
+              <p>Social Pro includes a built-in demo mode controlled by a single environment variable. When enabled, the auth
+                page shows a "Quick Demo Login" panel with <strong>three pre-configured accounts</strong> for testing
+                all role levels.</p>
+
+              <h3>Enabling Demo Mode</h3>
+              <div class="code-block">
+                <div class="code-header"><span>.env</span><button class="copy-btn">Copy</button></div>
+                <pre>
+# Enable demo mode (shows quick login panel)
+VITE_DEMO_MODE=true</pre>
+              </div>
+
+              <h3>Disabling Demo Mode (Production)</h3>
+              <div class="code-block">
+                <div class="code-header"><span>.env</span><button class="copy-btn">Copy</button></div>
+                <pre>
+# Disable demo mode (standard login only, no credentials exposed)
+VITE_DEMO_MODE=false
+
+# Or simply remove the variable — defaults to disabled</pre>
+              </div>
+
+              <h3>Demo Accounts</h3>
+              <p>When demo mode is enabled, the following accounts appear as one-click login buttons:</p>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Access Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>👤 <strong>User</strong></td>
+                    <td><code>user@demo.com</code></td>
+                    <td><code>User123!</code></td>
+                    <td>Standard — all social features, marketplace, credits</td>
+                  </tr>
+                  <tr>
+                    <td>🛡️ <strong>Moderator</strong></td>
+                    <td><code>moderator@demo.com</code></td>
+                    <td><code>Moderator123!</code></td>
+                    <td>Standard + Moderator Panel (content reports, warnings, bans)</td>
+                  </tr>
+                  <tr>
+                    <td>⚙️ <strong>Admin</strong></td>
+                    <td><code>admin@demo.com</code></td>
+                    <td><code>Admin123!</code></td>
+                    <td>Full access — Admin Panel, all settings, user management</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3>Behavior Summary</h3>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Mode</th>
+                    <th>Auth Page</th>
+                    <th>Credentials Visible?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>VITE_DEMO_MODE=true</code></td>
+                    <td>"Quick Demo Login" panel with 3 role-based accounts and one-click sign-in buttons</td>
+                    <td>Yes — all 3 accounts shown</td>
+                  </tr>
+                  <tr>
+                    <td><code>VITE_DEMO_MODE=false</code> (default)</td>
+                    <td>Standard login form only — no demo panel, no credentials</td>
+                    <td>No — completely hidden</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3>Setting Up Demo Accounts</h3>
+              <p>Before enabling demo mode, ensure the three demo accounts exist in your Supabase Auth:</p>
+              <ol>
+                <li>Create accounts via the Setup Wizard or Supabase dashboard with the emails/passwords above</li>
+                <li>
+                  Assign roles via Admin Panel → User Management:
+                  <ul>
+                    <li><code>user@demo.com</code> — no special role (default user)</li>
+                    <li><code>moderator@demo.com</code> — assign <code>moderator</code> role</li>
+                    <li><code>admin@demo.com</code> — assign <code>admin</code> role</li>
+                  </ul>
+                </li>
+              </ol>
+
+              <div class="callout danger">
+                <strong>🚨 Security Warning</strong>
+                <strong>Never enable demo mode in production with real user data.</strong> Demo credentials are
+                hardcoded and visible to anyone. Use demo mode only for staging, demos, and testing environments.
+              </div>
+            </section>
+
+            <section class="doc-section" id="storage">
+              <h2>File Storage</h2>
+              <p>All uploads go to dedicated public Supabase Storage buckets. See <a href="#upgrade-storage">Storage
+                  Buckets</a> for the full list. Max file sizes:</p>
+              <ul>
+                <li>Profile/post images: 10 MB</li>
+                <li>Chat attachments: 10 MB</li>
+                <li>Stories: 50 MB</li>
+                <li>Reels: 100 MB</li>
+                <li>Post videos: 50 MB</li>
+                <li>Site assets: 5 MB</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="edge-functions">
+              <h2>Backend Functions</h2>
+              <p>11 Deno-based edge functions in <code>supabase/functions/</code>:</p>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                    <th>Trigger</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>setup-admin</code></td>
+                    <td>Creates Super Admin during setup wizard</td>
+                    <td>Setup wizard form</td>
+                  </tr>
+                  <tr>
+                    <td><code>translate-post</code></td>
+                    <td>AI-powered post translation</td>
+                    <td>User click</td>
+                  </tr>
+                  <tr>
+                    <td><code>embed-post</code></td>
+                    <td>Generates embeddable HTML</td>
+                    <td>Embed modal</td>
+                  </tr>
+                  <tr>
+                    <td><code>tenor-proxy</code></td>
+                    <td>Proxies Tenor GIF API</td>
+                    <td>GIF picker</td>
+                  </tr>
+                  <tr>
+                    <td><code>fetch-link-preview</code></td>
+                    <td>Fetches OpenGraph metadata for link previews</td>
+                    <td>Post creation</td>
+                  </tr>
+                  <tr>
+                    <td><code>event-reminders</code></td>
+                    <td>Sends event reminder notifications</td>
+                    <td>Cron / scheduled</td>
+                  </tr>
+                  <tr>
+                    <td><code>memories-notification</code></td>
+                    <td>"On This Day" memories</td>
+                    <td>Cron / scheduled</td>
+                  </tr>
+                  <tr>
+                    <td><code>publish-scheduled-posts</code></td>
+                    <td>Publishes scheduled posts</td>
+                    <td>Cron / scheduled</td>
+                  </tr>
+                  <tr>
+                    <td><code>weekly-event-digest</code></td>
+                    <td>Weekly event summary emails</td>
+                    <td>Cron / scheduled</td>
+                  </tr>
+                  <tr>
+                    <td><code>detect-fraud-signals</code></td>
+                    <td>Marketplace fraud detection</td>
+                    <td>On listing create/update</td>
+                  </tr>
+                  <tr>
+                    <td><code>auto-verify-sellers</code></td>
+                    <td>Auto-verifies sellers meeting criteria</td>
+                    <td>Cron / scheduled</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="doc-section" id="rls-security">
+              <h2>Security &amp; RLS</h2>
+              <ul>
+                <li><strong>All 50+ tables have RLS enabled</strong></li>
+                <li>User-scoped data by default</li>
+                <li>Role escalation via <code>has_role()</code> SECURITY DEFINER function</li>
+                <li>Group/page access via <code>is_group_member()</code>, <code>is_page_admin()</code>,
+                  <code>is_conversation_member()</code>
+                </li>
+                <li>Content moderation via <code>content_reports</code> table</li>
+                <li>User warnings/bans via moderation system</li>
+                <li>Admin has SELECT/UPDATE/DELETE on all platform content</li>
+              </ul>
+            </section>
+
+            <section class="doc-section" id="realtime">
+              <h2>Realtime</h2>
+              <p>PostgreSQL changes broadcast via Supabase Realtime for: messages, notifications, online presence,
+                typing indicators.</p>
+              <div class="code-block">
+                <div class="code-header"><span>TypeScript</span><button class="copy-btn">Copy</button></div>
+                <pre>
+const channel = supabase
+  .channel('messages')
+  .on('postgres_changes', {
+    event: 'INSERT',
+    schema: 'public',
+    table: 'messages',
+    filter: `conversation_id=eq.${convId}`,
+  }, (payload) => {
+    // Handle new message
+  })
+  .subscribe();</pre>
+              </div>
+            </section>
+
+            <section class="doc-section" id="roles">
+              <h2>User Roles &amp; RBAC</h2>
+              <p>Roles stored in separate <code>user_roles</code>
+                <td>Sistema de grupos</td>
+                </tr>
+                <tr>
+                  <td><code>pages</code> / <code>page_followers</code> / <code>page_posts</code></td>
+                  <td>Sistema de páginas</td>
+                </tr>
+                <tr>
+                  <td><code>group_events</code> / <code>group_event_rsvps</code></td>
+                  <td>Eventos com RSVP</td>
+                </tr>
+                <tr>
+                  <td><code>reels</code> / <code>reel_likes</code> / <code>reel_comments</code></td>
+                  <td>Vídeo curto (Reels)</td>
+                </tr>
+                </tbody>
+                </table>
+
+              <h4>Marketplace</h4>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Tabela</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>listings</code></td>
+                    <td>Anúncios de produtos</td>
+                  </tr>
+                  <tr>
+                    <td><code>listing_offers</code></td>
+                    <td>Ofertas de compradores</td>
+                  </tr>
+                  <tr>
+                    <td><code>seller_reviews</code> / <code>verified_sellers</code></td>
+                    <td>Confiança e verificação</td>
+                  </tr>
+                  <tr>
+                    <td><code>listing_fraud_signals</code></td>
+                    <td>Detecção de fraudes</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>Monetização</h4>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Tabela</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>promotion_credits</code></td>
+                    <td>Saldos de créditos de usuários</td>
+                  </tr>
+                  <tr>
+                    <td><code>credit_transactions</code></td>
+                    <td>Registro de movimentação de créditos (spend, topup, gift, admin_gift)</td>
+                  </tr>
+                  <tr>
+                    <td><code>sponsored_posts</code></td>
+                    <td>Campanhas de anúncios patrocinados com dados de segmentação e desempenho</td>
+                  </tr>
+                  <tr>
+                    <td><code>promoted_listings</code></td>
+                    <td>Anúncios impulsionados do marketplace</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="doc-section" id="api-reference">
+              <h2>Referência da API</h2>
+              <p>O Social Pro usa o <strong>Supabase JavaScript SDK</strong> (<code>@supabase/supabase-js</code>) para todo o
+                acesso a dados. Nenhuma API REST personalizada — todas as consultas passam pelo cliente do Supabase com
+                tipos TypeScript gerados automaticamente.</p>
+              <div class="code-block">
+                <div class="code-header"><span>TypeScript</span><button class="copy-btn">Copy</button></div>
+                <pre>
+import { supabase } from "@/integrations/supabase/client";
+
+// Exemplo: Buscar posts do usuário
+const { data: posts } = await supabase
+  .from("posts")
+  .select("*")
+  .eq("user_id", userId)
+  .order("created_at", { ascending: false })
+  .limit(20);
+
+// Exemplo: Inserir uma nova notificação
+await supabase.from("notifications").insert({
+  user_id: targetUserId,
+  actor_id: currentUserId,
+  type: "credit_gift",
+  message: "sent you 50 credits",
+});</pre>
+              </div>
+              <h3>Principais Hooks</h3>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Hook</th>
+                    <th>Objetivo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>useAuth()</code></td>
+                    <td>Sessão do usuário atual e estado de autenticação</td>
+                  </tr>
+                  <tr>
+                    <td><code>useCurrentProfile()</code></td>
+                    <td>Dados de perfil do usuário atual</td>
+                  </tr>
+                  <tr>
+                    <td><code>useDarkMode()</code></td>
+                    <td>Estado de alternância do tema</td>
+                  </tr>
+                  <tr>
+                    <td><code>useSiteBranding()</code></td>
+                    <td>Logos dinâmicos, favicon, nome do site</td>
+                  </tr>
+                  <tr>
+                    <td><code>useSiteSettings()</code></td>
+                    <td>Configuração global do site</td>
+                  </tr>
+                  <tr>
+                    <td><code>useMyAds()</code></td>
+                    <td>Posts patrocinados do usuário com mutações CRUD</td>
+                  </tr>
+                  <tr>
+                    <td><code>useSponsoredPosts()</code></td>
+                    <td>Posts patrocinados ativos para o feed</td>
+                  </tr>
+                  <tr>
+                    <td><code>useOnlinePresence()</code></td>
+                    <td>Rastreamento online/offline em tempo real</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="doc-section" id="project-structure">
+              <h2>Estrutura do Projeto</h2>
+              <div class="code-block">
+                <div class="code-header"><span>Árvore do projeto</span></div>
+                <pre>
+Social Pro/
+├── docs/                    # Esta documentação
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── public/                  # Assets estáticos
+├── src/
+│   ├── assets/              # Imagens, logos
+│   ├── components/
+│   │   ├── admin/           # Componentes do painel administrativo
+│   │   ├── moderator/       # Componentes do painel do moderador
+│   │   ├── profile/         # Componentes da página de perfil
+│   │   ├── sidebar/         # Seções da barra lateral
+│   │   ├── ui/              # Primitivas do shadcn/ui (50+)
+│   │   ├── watch/           # Componentes de vídeo/Watch
+│   │   └── ads/             # Componentes de exibição de anúncios
+│   ├── constants/           # Listas de categorias, enums
+│   ├── hooks/               # Hooks React personalizados (25+)
+│   ├── integrations/        # Cliente Supabase e tipos (gerados automaticamente)
+│   ├── lib/                 # Utilitários (deep links, exportação de calendário, limite de frequência de anúncios, etc.)
+│   ├── pages/               # Páginas de rotas (25+)
+│   ├── index.css            # Base do Tailwind + design tokens
+│   ├── App.tsx              # Configuração do roteador
+│   └── main.tsx             # Ponto de entrada
+├── supabase/
+│   ├── config.toml          # Configuração do projeto Supabase
+│   ├── functions/           # Edge Functions (11)
+│   └── migrations/          # Migrações SQL (cronológicas)
+├── .env                     # Variáveis de ambiente (não salvas no Git)
+├── tailwind.config.ts       # Tailwind + design tokens
+├── vite.config.ts           # Configuração de compilação do Vite
+├── package.json             # Dependências e scripts</pre>
+              </div>
+            </section>
+
+            <!-- ────── CHANGELOG ────── -->
+            <section class="doc-section" id="changelog">
+              <h2>Registro de Alterações (Changelog)</h2>
+
+              <div class="changelog-entry">
+                <div>
+                  <span class="version">v1.0.0</span>
+                  <span class="date">7 de abril de 2026 — Lançamento Inicial</span>
+                </div>
+                <br />
+
+                <h4>🚀 Plataforma Principal</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Plataforma de rede social completa — React 18 + TypeScript 5
+                    + Vite 5 + Tailwind CSS v3</li>
+                  <li><span class="tag tag-new">NEW</span> Tema escuro/claro com detecção de preferência do sistema</li>
+                  <li><span class="tag tag-new">NEW</span> Design responsivo focado em dispositivos móveis com barra
+                    lateral adaptativa</li>
+                  <li><span class="tag tag-new">NEW</span> Pesquisa global em todos os tipos de conteúdo</li>
+                  <li><span class="tag tag-new">NEW</span> Descoberta e vinculação de hashtags</li>
+                  <li><span class="tag tag-new">NEW</span> Links diretos em todas as páginas e recursos</li>
+                  <li><span class="tag tag-new">NEW</span> Identidade visual afCode com sistema de design
+                    verde-petróleo (#247b7b)</li>
+                </ul>
+
+                <h4>🔐 Autenticação e Segurança</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Registro em 7 etapas com corte de foto, interesses e buscador
+                    de amigos</li>
+                  <li><span class="tag tag-new">NEW</span> Google OAuth e Apple Sign-In</li>
+                  <li><span class="tag tag-new">NEW</span> Verificação de e-mail com reenvio + tempo de espera</li>
+                  <li><span class="tag tag-new">NEW</span> Fluxo de redefinição de senha via
+                    <code>/reset-password</code>
+                  </li>
+                  <li><span class="tag tag-new">NEW</span> Assistente de Configuração em 4 etapas com criação segura de
+                    administrador (Edge Function)</li>
+                  <li><span class="tag tag-new">NEW</span> Row-Level Security em todas as mais de 50 tabelas</li>
+                  <li><span class="tag tag-new">NEW</span> RBAC: funções de admin, moderador, usuário</li>
+                  <li><span class="tag tag-new">NEW</span> Modo Demo/Teste com 3 contas baseadas em funções via
+                    <code>VITE_DEMO_MODE</code>
+                  </li>
+                </ul>
+
+                <h4>📱 Recursos Sociais</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Publicações: carrossel de várias imagens, vídeo, fundos,
+                    sentimentos, localização, privacidade</li>
+                  <li><span class="tag tag-new">NEW</span> 6 tipos de reações, comentários em tópicos, compartilhamento,
+                    salvamento, fixação</li>
+                  <li><span class="tag tag-new">NEW</span> Agendamento de posts (visualizações de calendário + semanal),
+                    histórico de edições</li>
+                  <li><span class="tag tag-new">NEW</span> Incorporação de posts, tradução por IA, pré-visualizações de
+                    links</li>
+                  <li><span class="tag tag-new">NEW</span> Impulsionar posts com créditos de promoção</li>
+                </ul>
+
+                <h4>📸 Stories e Reels</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Stories de foto/vídeo com expiração de 24 horas e destaques
+                  </li>
+                  <li><span class="tag tag-new">NEW</span> Reels curtos com curtidas, comentários, seguir criadores</li>
+                </ul>
+
+                <h4>💬 Mensagens</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Mensagens em tempo real 1:1 e em grupo</li>
+                  <li><span class="tag tag-new">NEW</span> Anexos, mensagens de voz, reações, recibos de leitura,
+                    indicadores de digitação</li>
+                  <li><span class="tag tag-new">NEW</span> Fixar, editar, encaminhar mensagens, seletores de GIFs e
+                    emojis</li>
+                </ul>
+
+                <h4>👥 Grupos e Páginas</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Grupos públicos/privados com posts, chat, eventos, convites,
+                    análises</li>
+                  <li><span class="tag tag-new">NEW</span> Páginas comerciais com seguidores, posts agendados, múltiplos
+                    administradores</li>
+                  <li><span class="tag tag-new">NEW</span> Impulsionar páginas e posts de páginas com créditos</li>
+                  <li><span class="tag tag-new">NEW</span> Impulsionar posts de grupos com créditos</li>
+                </ul>
+
+                <h4>📅 Eventos</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> 10 categorias, RSVP, recorrência, lembretes, visualizações de
+                    calendário/mapa</li>
+                  <li><span class="tag tag-new">NEW</span> Exportação .ics, resumo semanal, eventos relacionados</li>
+                </ul>
+
+                <h4>🛒 Marketplace</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Anúncios: 10 categorias, ofertas, avaliações de vendedores,
+                    selos de verificação</li>
+                  <li><span class="tag tag-new">NEW</span> Detecção de fraudes, histórico de preços, anúncios promovidos
+                    baseados em créditos</li>
+                </ul>
+
+                <h4>🎬 Watch</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Plataforma de vídeo: 13 categorias, playlists, indicador ao
+                    vivo, comentários</li>
+                </ul>
+
+                <h4>💰 Créditos e Publicidade</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Economia de créditos de promoção: saldo, pacotes de recarga,
+                    histórico de transações</li>
+                  <li><span class="tag tag-new">NEW</span> Doação de créditos pelo admin para qualquer usuário com
+                    mensagem personalizada</li>
+                  <li><span class="tag tag-new">NEW</span> Presente de créditos de usuário para usuário</li>
+                  <li><span class="tag tag-new">NEW</span> Notificações de créditos: presente recebido, presente do
+                    admin, confirmação de gastos, aviso de saldo baixo</li>
+                  <li><span class="tag tag-new">NEW</span> Central de anúncios (<code>/advertising</code>) com as abas
+                    Dashboard, Meus Anúncios (My Ads) e Créditos</li>
+                  <li><span class="tag tag-new">NEW</span> Gerenciamento completo (CRUD) para posts patrocinados: criar,
+                    editar, pausar/ativar, excluir</li>
+                  <li><span class="tag tag-new">NEW</span> Filtragem de status de anúncios: Todos, Ativos, Pausados,
+                    Expirados</li>
+                  <li><span class="tag tag-new">NEW</span> Estatísticas de desempenho por anúncio: impressões, cliques,
+                    CTR, créditos gastos</li>
+                  <li><span class="tag tag-new">NEW</span> Segmentação de público: categoria, localização, limite de
+                    frequência</li>
+                  <li><span class="tag tag-new">NEW</span> Impulsionar páginas, posts, posts de grupos, posts de páginas
+                    e anúncios do marketplace</li>
+                  <li><span class="tag tag-new">NEW</span> Anúncios intersticiais com limite de frequência (5
+                    navegações, intervalo de 5 minutos)</li>
+                  <li><span class="tag tag-new">NEW</span> Espaços de anúncios HTML do admin: cabeçalho, barra lateral,
+                    rodapé, 3 posições no feed</li>
+                </ul>
+
+                <h4>🛡️ Admin e Moderação</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> Painel administrativo com 11 categorias de configurações e
+                    painel de visão geral da plataforma</li>
+                  <li><span class="tag tag-new">NEW</span> Editor de CMS, design do site, injeção personalizada de
+                    CSS/JS</li>
+                  <li><span class="tag tag-new">NEW</span> Fila de moderação de conteúdo, avisos/banimentos, registro de
+                    atividades</li>
+                  <li><span class="tag tag-new">NEW</span> Gerenciamento de usuários com atribuição de funções e doação
+                    de créditos</li>
+                  <li><span class="tag tag-new">NEW</span> Sistema de verificação para usuários e vendedores</li>
+                  <li><span class="tag tag-new">NEW</span> Paginação padronizada (15 itens/página) em todas as tabelas
+                    administrativas</li>
+                </ul>
+
+                <h4>⚙️ Infraestrutura</h4>
+                <ul>
+                  <li><span class="tag tag-new">NEW</span> 11 Edge Functions, 10 buckets de armazenamento</li>
+                  <li><span class="tag tag-new">NEW</span> Assinaturas em tempo real para mensagens e presença</li>
+                  <li><span class="tag tag-new">NEW</span> Rastreamento de presença online, armazenamento JSONB de
+                    configurações do site</li>
+                  <li><span class="tag tag-new">NEW</span> Identidade visual dinâmica via hook
+                    <code>useSiteBranding</code>
+                  </li>
+                  <li><span class="tag tag-new">NEW</span> Modo demo com 3 contas baseadas em funções (User, Moderator,
+                    Admin)</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- ────── TROUBLESHOOTING ────── -->
+            <section class="doc-section" id="troubleshooting">
+              <h2>Resolução de Problemas (Troubleshooting)</h2>
+
+              <h4>O aplicativo redireciona para /setup repetidamente</h4>
+              <p>A tabela <code>user_roles</code> está vazia ou sua política RLS bloqueia leituras. Certifique-se de que
+                existe pelo menos uma linha de administrador.</p>
+
+              <h4>O assistente de configuração falha ao criar o administrador</h4>
+              <p>A Edge Function <code>setup-admin</code> requer a chave <code>SUPABASE_SERVICE_ROLE_KEY</code> como
+                segredo. Verifique se ela está configurada em seus segredos de backend.</p>
+
+              <h4>Imagens/Logos não carregam</h4>
+              <p>Verifique se o bucket <code>site-assets</code> existe e é público. Verifique as URLs em
+                <code>site_settings</code> → <code>admin_design</code>.
+              </p>
+
+              <h4>Tempo real (Realtime) não está funcionando</h4>
+              <p>Verifique se as tabelas foram adicionadas à publicação em tempo real:
+                <code>ALTER PUBLICATION supabase_realtime ADD TABLE messages;</code>
+              </p>
+
+              <h4>Permissão RLS negada</h4>
+              <p>O usuário pode não estar autenticado ou não ter a função necessária. Verifique as políticas usando a
+                função <code>has_role()</code>.</p>
+
+              <h4>A compilação (build) falha com erros de TypeScript</h4>
+              <div class="code-block">
+                <div class="code-header"><span>Terminal</span><button class="copy-btn">Copy</button></div>
+                <pre>
+npx tsc --noEmit           # Visualizar os erros exatos
+rm -rf node_modules/.vite  # Limpar cache do Vite
+bun install && bun run build</pre>
+              </div>
+
+              <h4>Login demo não aparece</h4>
+              <p>Verifique se <code>VITE_DEMO_MODE=true</code> está no seu arquivo <code>.env</code> (e não
+                <code>DEMO_MODE</code>). Reinicie o servidor de desenvolvimento após alterar as variáveis de ambiente.
+                Certifique-se de que as contas demo existem no Auth.
+              </p>
+
+              <h4>Edge Function retorna 404</h4>
+              <p>A função pode não ter sido implantada. Execute <code>supabase functions deploy nome-da-funcao</code> ou
+                faça a implantação novamente pelo seu projeto no afCode Cloud.</p>
+
+              <h4>Os créditos não estão sendo deduzidos / o saldo não muda</h4>
+              <p>Verifique se o usuário tem uma linha em <code>promotion_credits</code>. Se não, insira uma com
+                <code>balance: 0</code>. Verifique se as políticas RLS permitem que o usuário atualize seu próprio saldo
+                de créditos.
+              </p>
+
+              <h4>Post patrocinado não aparece no feed</h4>
+              <p>Verifique se <code>is_active = true</code>, <code>start_date</code> ≤ agora e <code>end_date</code> ≥
+                agora. Além disso, verifique se o limite de frequência não foi excedido para o usuário que está
+                visualizando.</p>
+            </section>
+
+            <!-- ────── FAQ ────── -->
+            <section class="doc-section" id="faq">
+              <h2>Perguntas Frequentes (FAQ)</h2>
+
+              <h4>Como atualizo para uma nova versão?</h4>
+              <p>Siga o guia de <a href="#upgrade-overview">Atualização e Migração</a>. Em resumo: obter o código mais
+                recente → instalar dependências → aplicar migrações → implantar Edge Functions → compilar → implantar
+                frontend.</p>
+
+              <h4>Posso usar meu próprio projeto Supabase?</h4>
+              <p>Sim. Defina a URL e as chaves do seu Supabase no arquivo <code>.env</code>, aplique todas as migrações
+                da pasta <code>supabase/migrations/</code>, crie os buckets de armazenamento e implante as Edge
+                Functions.</p>
+
+              <h4>Como adiciono um novo administrador?</h4>
+              <p>Um administrador existente pode atribuir a função administrativa acessando Painel Administrativo →
+                Gerenciamento de Usuários → clique em um usuário → altere a função para admin.</p>
+
+              <h4>O aplicativo está pronto para celulares (mobile-ready)?</h4>
+              <p>Sim. O Social Pro é totalmente responsivo com um design mobile-first, barra lateral adaptativa, gestos de
+                toque e notificações dispensáveis deslizando o dedo.</p>
+
+              <h4>Posso personalizar a identidade visual?</h4>
+              <p>Sim. Acesse Painel Administrativo → Design do Site para enviar os logos, favicon e definir as cores do
+                tema. Também é possível injetar CSS/JS personalizado.</p>
+
+              <h4>Como ativo/desativo recursos?</h4>
+              <p>Painel Administrativo → Configurações → aba Recursos. Ative/desative recursos específicos da
+                plataforma.</p>
+
+              <h4>Onde os dados dos usuários são armazenados?</h4>
+              <p>Banco de dados PostgreSQL via Supabase. Arquivos nos buckets do Supabase Storage. Todos os dados são
+                protegidos por políticas de Row-Level Security (RLS).</p>
+
+              <h4>Como dou créditos aos usuários?</h4>
+              <p>Os administradores podem doar créditos acessando Painel Administrativo → Gerenciamento de Usuários →
+                selecionar usuário → Doar Créditos. Os usuários também podem comprar pacotes de créditos em
+                <code>/credits</code> ou receber presentes de outros usuários.
+              </p>
+
+              <h4>Como gerencio anúncios como administrador?</h4>
+              <p>Painel Administrativo → Anúncios permite gerenciar 6 espaços de anúncios HTML (cabeçalho, barra
+                lateral, rodapé, 3 no feed). Os usuários autogerenciam seus posts patrocinados a partir de
+                <code>/advertising</code>.
+              </p>
+
+              <h4>Como funciona o modo demo?</h4>
+              <p>Defina <code>VITE_DEMO_MODE=true</code> em <code>.env</code> para exibir um painel de login rápido com
+                3 contas pré-configuradas (User, Moderator, Admin). Remova ou defina como <code>false</code> para
+                produção. Consulte o <a href="#demo-mode">Modo Demo</a>.</p>
+            </section>
+
+            <!-- ────── CREDITS ────── -->
+            <section class="doc-section" id="credits">
+              <h2>Créditos</h2>
+              <p>
+                O Social Pro é projetado e desenvolvido pela <a href="https://afcode.com.br/"
+                  target="_blank"><strong>afCode</strong></a>.
+              </p>
+              <h3>Stack de Tecnologia</h3>
+              <ul>
+                <li><strong>Frontend:</strong> React 18, TypeScript 5, Vite 5, Tailwind CSS v3</li>
+                <li><strong>UI:</strong> shadcn/ui (Radix UI), Lucide icons</li>
+                <li><strong>Estado (State):</strong> TanStack React Query</li>
+                <li><strong>Roteamento (Routing):</strong> React Router v6</li>
+                <li><strong>Backend:</strong> Supabase (PostgreSQL, Auth, Storage, Edge Functions, Realtime)</li>
+                <li><strong>Mapas:</strong> Leaflet com agrupamento de marcadores</li>
+                <li><strong>Gráficos:</strong> Recharts</li>
+              </ul>
+              <p style="margin-top: 24px; font-size: 13px; color: var(--wc-text-muted)">&copy; 2026 <a
+                  href="https://afcode.com.br/" target="_blank">afCode</a>. Todos os direitos reservados.</p>
+            </section>
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="doc-footer">
+    <p>&copy; 2026 <a href="https://afcode.com.br/" target="_blank">afCode</a> — Documentação do Social Pro v1.0.0</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

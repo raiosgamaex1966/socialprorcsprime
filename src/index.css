@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 8% 96%;
+    --foreground: 185 20% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 185 20% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 185 20% 8%;
+
+    --primary: 180 55% 31%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 8% 92%;
+    --secondary-foreground: 185 20% 8%;
+
+    --muted: 180 8% 92%;
+    --muted-foreground: 185 10% 40%;
+
+    --accent: 180 4% 92%;
+    --accent-foreground: 185 20% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 10% 87%;
+    --input: 180 10% 87%;
+    --ring: 180 55% 31%;
+
+    --radius: 0.5rem;
+
+    --fb-blue: 180 55% 31%;
+    --fb-blue-hover: 185 76% 22%;
+    --fb-green: 160 60% 36%;
+    --fb-header: 0 0% 100%;
+    --fb-hover: 180 4% 92%;
+    --fb-separator: 180 10% 87%;
+    --fb-text-secondary: 185 10% 40%;
+    --fb-like-blue: 180 55% 31%;
+    --fb-love-red: 0 84% 60%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 185 20% 8%;
+    --sidebar-primary: 180 55% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 8% 92%;
+    --sidebar-accent-foreground: 185 20% 8%;
+    --sidebar-border: 180 10% 87%;
+    --sidebar-ring: 180 55% 31%;
+  }
+
+  .dark {
+    --background: 185 12% 10%;
+    --foreground: 180 8% 92%;
+    --card: 185 12% 14%;
+    --card-foreground: 180 8% 92%;
+    --popover: 185 12% 14%;
+    --popover-foreground: 180 8% 92%;
+    --primary: 180 55% 31%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 185 12% 18%;
+    --secondary-foreground: 180 8% 92%;
+    --muted: 185 12% 18%;
+    --muted-foreground: 180 8% 60%;
+    --accent: 180 55% 31%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 185 12% 20%;
+    --input: 185 12% 20%;
+    --ring: 180 55% 31%;
+    --fb-blue: 180 55% 31%;
+    --fb-blue-hover: 180 55% 38%;
+    --fb-green: 160 60% 40%;
+    --fb-header: 185 12% 14%;
+    --fb-hover: 185 12% 18%;
+    --fb-separator: 185 12% 20%;
+    --fb-text-secondary: 180 8% 60%;
+    --fb-like-blue: 180 55% 31%;
+    --fb-love-red: 0 84% 60%;
+    --sidebar-background: 185 12% 10%;
+    --sidebar-foreground: 180 8% 92%;
+    --sidebar-primary: 180 55% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 185 12% 18%;
+    --sidebar-accent-foreground: 180 8% 92%;
+    --sidebar-border: 185 12% 20%;
+    --sidebar-ring: 180 55% 31%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes checkin-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.custom-cluster-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-checkin-marker,
+.custom-add-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.leaflet-marker-cluster-small,
+.leaflet-marker-cluster-medium,
+.leaflet-marker-cluster-large {
+  background: transparent !important;
+}
+
+.leaflet-marker-cluster-small div,
+.leaflet-marker-cluster-medium div,
+.leaflet-marker-cluster-large div {
+  background: transparent !important;
+}

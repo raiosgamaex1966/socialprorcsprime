@@ -1,0 +1,1 @@
+ALTER TABLE public.posts ADD COLUMN shared_group_post_id uuid REFERENCES public.group_posts(id) ON DELETE SET NULL DEFAULT NULL;

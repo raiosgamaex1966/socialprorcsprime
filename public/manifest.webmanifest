@@ -1,0 +1,20 @@
+{
+  "name": "Social Pro — Social Networking",
+  "short_name": "Social Pro",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#247b7b",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

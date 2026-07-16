@@ -1,0 +1,1 @@
+ALTER TABLE public.page_posts ADD COLUMN scheduled_at timestamptz DEFAULT NULL;

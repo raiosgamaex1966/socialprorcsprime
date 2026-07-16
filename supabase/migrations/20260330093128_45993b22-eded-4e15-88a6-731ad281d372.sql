@@ -1,0 +1,1 @@
+ALTER TABLE public.posts ADD COLUMN shared_page_post_id uuid REFERENCES public.page_posts(id) ON DELETE SET NULL DEFAULT NULL;

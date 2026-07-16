@@ -1,0 +1,4 @@
+UPDATE sponsored_posts SET image_url = 'https://debzpuwdboryzsnjzuuf.supabase.co/storage/v1/object/public/post-images/sponsored%2Fdeals.jpg' WHERE id = 'e1929abf-724a-4c30-b5c6-442d35060558';
+UPDATE sponsored_posts SET image_url = 'https://debzpuwdboryzsnjzuuf.supabase.co/storage/v1/object/public/post-images/sponsored%2Fmeetup.jpg' WHERE id = '820c0b1c-f73a-4740-bac9-408f68e6a69d';
+UPDATE sponsored_posts SET image_url = 'https://debzpuwdboryzsnjzuuf.supabase.co/storage/v1/object/public/post-images/sponsored%2Ftech.jpg' WHERE id = '8a2d0bd7-2a8d-49ac-aad1-707923890dfa';
+UPDATE sponsored_posts SET image_url = 'https://debzpuwdboryzsnjzuuf.supabase.co/storage/v1/object/public/post-images/sponsored%2Fbusiness.jpg' WHERE id = '6439b87f-564c-4e31-a79d-9f95e4fae3bc';

@@ -1,0 +1,1 @@
+ALTER TABLE public.posts ADD COLUMN shared_post_id uuid REFERENCES public.posts(id) ON DELETE SET NULL;

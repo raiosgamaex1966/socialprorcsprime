@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN cover_photo_offset_y integer DEFAULT 50;

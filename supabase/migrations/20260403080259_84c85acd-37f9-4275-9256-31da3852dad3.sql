@@ -1,0 +1,6 @@
+
+ALTER TABLE public.posts 
+  ADD COLUMN IF NOT EXISTS privacy text NOT NULL DEFAULT 'public',
+  ADD COLUMN IF NOT EXISTS background_style text DEFAULT NULL,
+  ADD COLUMN IF NOT EXISTS location text DEFAULT NULL,
+  ADD COLUMN IF NOT EXISTS feeling text DEFAULT NULL;

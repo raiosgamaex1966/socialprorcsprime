@@ -1,0 +1,1 @@
+ALTER TABLE public.group_events ADD COLUMN reminder_sent boolean NOT NULL DEFAULT false;

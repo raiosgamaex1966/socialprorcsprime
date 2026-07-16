@@ -1,0 +1,1 @@
+ALTER TABLE public.sponsored_posts ADD COLUMN frequency_cap integer NOT NULL DEFAULT 5;

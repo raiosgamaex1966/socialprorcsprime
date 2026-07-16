@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <title>Social Pro — Social Networking JS Script</title>
+  <meta name="description" content="Social Pro — Social Networking JS Script" />
+  <meta name="author" content="afCode" />
+
+  <meta name="theme-color" content="#247b7b" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Social Pro — Social Networking JS Script" />
+  <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+
+  <meta property="og:title" content="Social Pro — Social Networking JS Script" />
+  <meta property="og:description" content="Connect with friends and the world around you." />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Social Pro" />
+
+  <style>
+    /* Lock scroll while splash is mounted to prevent CLS / scroll-jump */
+    html.splash-active,
+    body.splash-active {
+      overflow: hidden !important;
+      overscroll-behavior: none;
+    }
+
+    /* Inline splash styles — render instantly before any JS/CSS bundle loads */
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 20%, rgba(36, 123, 123, 0.18) 0%, transparent 55%), radial-gradient(circle at 80% 80%, rgba(36, 123, 123, 0.12) 0%, transparent 55%), linear-gradient(160deg, #f4f8f8 0%, #e8f1f1 50%, #dceaea 100%);
+      font-family:
+        "Geist",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      opacity: 1;
+      transition: opacity 450ms ease;
+    }
+
+    #app-splash[data-leaving="true"] {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #app-splash::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(36, 123, 123, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(36, 123, 123, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .splash-stage {
+      position: relative;
+      width: min(360px, 86vw);
+      aspect-ratio: 9 / 16;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 48px 32px;
+    }
+
+    .splash-logo-wrap {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #2a8d8d 0%, #247b7b 50%, #1a5e5e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 20px 50px -12px rgba(36, 123, 123, 0.45),
+        0 8px 20px -8px rgba(36, 123, 123, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      animation: splash-float 3.2s ease-in-out infinite;
+    }
+
+    .splash-logo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 32px;
+      background: radial-gradient(circle, rgba(36, 123, 123, 0.35) 0%, transparent 70%);
+      filter: blur(14px);
+      z-index: -1;
+      animation: splash-glow 2.4s ease-in-out infinite;
+    }
+
+    .splash-logo-wrap img {
+      max-width: 72%;
+      max-height: 72%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .splash-logo-fallback {
+      font-size: 44px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .splash-brand {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .splash-brand-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      color: #1a3a3a;
+      margin: 0;
+    }
+
+    .splash-brand-tag {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #5a7575;
+      margin: 0;
+    }
+
+    .splash-progress {
+      width: 200px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(36, 123, 123, 0.12);
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .splash-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #1a5e5e 0%, #247b7b 50%, #2a8d8d 100%);
+      box-shadow: 0 0 12px rgba(36, 123, 123, 0.6);
+      transition: width 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .splash-progress-fill::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+      animation: splash-shimmer 1.6s ease-in-out infinite;
+    }
+
+    .splash-percent {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #5a7575;
+      font-variant-numeric: tabular-nums;
+      margin-top: -16px;
+    }
+
+    .splash-credit {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #6b8585;
+      font-weight: 500;
+    }
+
+    .splash-credit a {
+      color: #247b7b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @keyframes splash-float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes splash-glow {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.9;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes splash-shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #app-splash {
+        background: radial-gradient(circle at 20% 20%, rgba(36, 123, 123, 0.22) 0%, transparent 55%), radial-gradient(circle at 80% 80%, rgba(36, 123, 123, 0.14) 0%, transparent 55%), linear-gradient(160deg, #0f1a1a 0%, #122222 50%, #0a1414 100%);
+      }
+
+      .splash-brand-name {
+        color: #e8f1f1;
+      }
+
+      .splash-brand-tag {
+        color: #7a9a9a;
+      }
+
+      .splash-credit {
+        color: #6b8585;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // Lock scroll immediately so splash can't trigger layout shift
+    document.documentElement.classList.add("splash-active");
+    document.body && document.body.classList.add("splash-active");
+  </script>
+  <div id="root" tabindex="-1"></div>
+  <div id="app-splash" role="status" aria-live="polite" aria-busy="true" aria-label="Loading socialpro" tabindex="-1">
+    <div class="splash-stage">
+      <div class="splash-logo-wrap">
+        <img id="app-splash-logo" src="/socialpro-logo-light.png"
+          data-fallbacks="/socialpro-logo-dark.png,/pwa-192x192.png,/favicon.png" alt="Social Pro" onerror="
+              (function (el) {
+                var f = (el.getAttribute('data-fallbacks') || '').split(',').filter(Boolean);
+                if (f.length) {
+                  el.src = f.shift();
+                  el.setAttribute('data-fallbacks', f.join(','));
+                } else {
+                  el.style.display = 'none';
+                  var s = document.getElementById('app-splash-logo-fallback');
+                  if (s) s.style.display = 'block';
+                }
+              })(this)
+            " />
+        <span id="app-splash-logo-fallback" class="splash-logo-fallback" style="display: none">X</span>
+      </div>
+      <div class="splash-brand">
+        <h1 class="splash-brand-name">Social Pro</h1>
+        <p class="splash-brand-tag">Compartilhe · Descubra</p>
+      </div>
+      <div class="splash-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+        aria-label="Loading progress" id="app-splash-progress">
+        <div class="splash-progress-fill" id="app-splash-progress-fill"></div>
+      </div>
+      <div class="splash-percent" id="app-splash-percent" aria-hidden="true">0%</div>
+      <div id="app-splash-status"
+        style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0">
+        Loading socialpro, 0 percent</div>
+      <div class="splash-credit">Desenvolvido por <a href="https://afcode.com.br/" target="_blank"
+          rel="noopener">afCode</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Real progress tracker for splash screen.
+    // Stages: initial(5) -> DOM events -> resources loaded -> React mounted -> initial data fetched
+    (function () {
+      var fill = document.getElementById("app-splash-progress-fill");
+      var pct = document.getElementById("app-splash-percent");
+      var bar = document.getElementById("app-splash-progress");
+      var status = document.getElementById("app-splash-status");
+      if (!fill || !pct) return;
+
+      var current = 0;
+      var target = 5;
+      var raf = null;
+      var lastAnnounced = -1;
+
+      function render() {
+        var diff = target - current;
+        if (Math.abs(diff) < 0.3) {
+          current = target;
+        } else {
+          current += diff * 0.18;
+        }
+        var v = Math.min(100, Math.max(0, current));
+        var rounded = Math.round(v);
+        fill.style.width = v.toFixed(1) + "%";
+        pct.textContent = rounded + "%";
+        if (bar) bar.setAttribute("aria-valuenow", String(rounded));
+        // Throttle SR announcements to every 25%
+        if (status && (rounded - lastAnnounced >= 25 || rounded === 100)) {
+          lastAnnounced = rounded;
+          status.textContent = rounded === 100 ? "socialpro loaded" : "Loading socialpro, " + rounded + " percent";
+        }
+        if (current < target - 0.1 || target < 100) {
+          raf = requestAnimationFrame(render);
+        } else if (current < 100) {
+          raf = requestAnimationFrame(render);
+        }
+      }
+
+      function setTarget(v) {
+        target = Math.max(target, Math.min(100, v));
+        if (!raf) raf = requestAnimationFrame(render);
+      }
+
+      // Expose for main.tsx
+      window.__splashProgress = {
+        set: setTarget,
+        done: function () {
+          setTarget(100);
+        },
+      };
+
+      // DOM ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+          setTarget(25);
+        });
+      } else {
+        setTarget(25);
+      }
+
+      // Track resource loads via PerformanceObserver
+      try {
+        var seen = 0;
+        var po = new PerformanceObserver(function (list) {
+          seen += list.getEntries().length;
+          // Map resource count to 25-65% range, capped
+          var bonus = Math.min(40, seen * 3);
+          setTarget(25 + bonus);
+        });
+        po.observe({ type: "resource", buffered: true });
+      } catch (e) {
+        /* noop */
+      }
+
+      // window load = all initial assets fetched
+      window.addEventListener("load", function () {
+        setTarget(75);
+      });
+
+      // kick first frame
+      raf = requestAnimationFrame(render);
+    })();
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
